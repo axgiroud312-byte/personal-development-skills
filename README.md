@@ -4,6 +4,40 @@
 
 设计参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills)，内容由用户独立维护。
 
+## 安装
+
+需要 Node.js 22.20 或更新的受支持版本（包含 npm / npx）和 Git，并能访问 npm 与 GitHub。
+
+使用 [Skills CLI](https://github.com/vercel-labs/skills) 直接从本仓库安装，无需单独发布 npm 包。在要使用技能的项目目录中运行：
+
+```sh
+npx skills add axgiroud312-byte/personal-development-skills
+```
+
+默认安装到当前项目；交互运行时可选择技能和目标 Agent。需要所有项目都能使用时，追加 `-g`。
+
+先查看可安装的技能，不执行安装：
+
+```sh
+npx skills add axgiroud312-byte/personal-development-skills --list
+```
+
+也可以明确指定技能和目标 Agent。例如，将 Issue、单项开发和整套开发三个技能安装到当前项目，供 Codex 使用：
+
+```sh
+npx skills add axgiroud312-byte/personal-development-skills --skill to-tickets implement implement-spec --agent codex
+```
+
+给 Codex 全局安装全部 8 个技能：
+
+```sh
+npx skills add axgiroud312-byte/personal-development-skills --skill '*' --agent codex -g
+```
+
+其他 Agent 的标识见 [安装器文档](https://github.com/vercel-labs/skills#supported-agents)。安装后在目标 Agent 中开启新会话，使用下面的中文表达。
+
+## 技能一览
+
 | 你可以这样说 | 对应技能 |
 | --- | --- |
 | 帮我把这个想法问清楚，先讨论 | `grilling`：理清需求 |
