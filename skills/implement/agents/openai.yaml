@@ -1,0 +1,5 @@
+interface:
+  display_name: "完成一项开发"
+  short_description: "完成单项任务并关联 PR，核对提交推送后保存交付结果并清理本次产物"
+policy:
+  allow_implicit_invocation: true

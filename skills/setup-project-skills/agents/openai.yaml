@@ -1,0 +1,5 @@
+interface:
+  display_name: "配置项目技能"
+  short_description: "设置项目文档、任务关联、测试审查和交付清理约定，优先沿用现状"
+policy:
+  allow_implicit_invocation: true

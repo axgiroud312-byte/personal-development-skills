@@ -1,0 +1,5 @@
+interface:
+  display_name: "讨论并记录"
+  short_description: "边讨论边维护已定需求、业务概念与取舍，让项目文档跟上当前结论"
+policy:
+  allow_implicit_invocation: true

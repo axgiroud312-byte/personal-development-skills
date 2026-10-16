@@ -1,0 +1,5 @@
+interface:
+  display_name: "连续完成整套开发"
+  short_description: "沿任务依赖持续开发和整合，交付整体 PR 并清理本次临时工作区"
+policy:
+  allow_implicit_invocation: true

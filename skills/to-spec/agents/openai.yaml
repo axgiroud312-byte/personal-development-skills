@@ -1,0 +1,5 @@
+interface:
+  display_name: "整理需求规格"
+  short_description: "将已有方案整理为规格，保存目标、技术设计、接口约定和验证决定"
+policy:
+  allow_implicit_invocation: true

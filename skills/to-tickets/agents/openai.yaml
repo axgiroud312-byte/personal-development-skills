@@ -1,0 +1,5 @@
+interface:
+  display_name: "拆分开发任务"
+  short_description: "从已有材料拆分可接手的任务，写清目标、验收、父子关系与真实阻塞"
+policy:
+  allow_implicit_invocation: true
