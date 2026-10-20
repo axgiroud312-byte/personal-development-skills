@@ -1,0 +1,5 @@
+interface:
+  display_name: "讲清刚才做了什么"
+  short_description: "用中文讲清刚才的改动、运行方式、选择原因与实际验证范围"
+policy:
+  allow_implicit_invocation: true
