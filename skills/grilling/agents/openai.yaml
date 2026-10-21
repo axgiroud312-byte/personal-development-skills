@@ -1,5 +1,5 @@
 interface:
   display_name: "理清需求"
-  short_description: "从真实使用场景出发，利用已有材料理清目标、范围和关键取舍"
+  short_description: "澄清需求与关键选择，按需记录，并衔接领域检查和界面设计"
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,5 @@
 interface:
   display_name: "配置项目技能"
-  short_description: "设置项目文档、任务关联、测试审查和交付清理约定，优先沿用现状"
+  short_description: "配置领域与界面设计衔接、前端默认搭配，以及任务和验证交付约定"
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,5 @@
 interface:
   display_name: "理清业务概念"
-  short_description: "在讨论或开发中统一业务术语、对象、关系和规则，直接复用已有材料"
+  short_description: "整体设计前检查业务对象、关系和规则，已有定义复用，缺口补齐并持续维护"
 policy:
   allow_implicit_invocation: true

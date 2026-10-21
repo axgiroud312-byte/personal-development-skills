@@ -1,5 +1,5 @@
 interface:
   display_name: "连续完成整套开发"
-  short_description: "沿任务依赖持续开发和整合，交付整体 PR 并清理，需要时讲清整体结果"
+  short_description: "统一领域、设计与前端选型，沿任务依赖持续开发、整合与验收交付"
 policy:
   allow_implicit_invocation: true

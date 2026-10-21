@@ -1,5 +1,5 @@
 interface:
   display_name: "拆分开发任务"
-  short_description: "从已有材料拆分可接手的任务，写清目标、验收、父子关系与真实阻塞"
+  short_description: "沿用领域、设计与统一组件方案，细化任务依赖和可观察验收"
 policy:
   allow_implicit_invocation: true

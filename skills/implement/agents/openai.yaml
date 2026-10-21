@@ -1,5 +1,5 @@
 interface:
   display_name: "完成一项开发"
-  short_description: "完成单项任务并关联 PR，保存交付结果并清理，需要时讲清改动与验证范围"
+  short_description: "沿用设计、样板与前端选型完成单项任务，实际验证并交付清理"
 policy:
   allow_implicit_invocation: true
