@@ -1,5 +1,5 @@
 interface:
-  display_name: "配置项目技能"
-  short_description: "配置领域与界面设计衔接、前端默认搭配，以及任务和验证交付约定"
+  display_name: "配置项目约定与索引"
+  short_description: "核实文档与运行命令，写入项目索引，并约定主 Agent 维护固定状态入口"
 policy:
   allow_implicit_invocation: true
