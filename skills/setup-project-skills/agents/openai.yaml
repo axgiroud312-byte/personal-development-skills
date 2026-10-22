@@ -1,5 +1,5 @@
 interface:
   display_name: "配置项目约定与索引"
-  short_description: "核实文档与运行命令，写入项目索引，并约定主 Agent 维护固定状态入口"
+  short_description: "核实项目文档与真实命令，维护简短入口索引并约定唯一状态入口"
 policy:
   allow_implicit_invocation: true

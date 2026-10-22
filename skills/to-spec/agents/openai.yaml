@@ -1,5 +1,5 @@
 interface:
   display_name: "整理需求规格"
-  short_description: "澄清需求、核对领域与前端选型，结合界面设计形成整体技术方案"
+  short_description: "复用已定需求与领域依据，补齐关键缺口并形成整体方案和完成标准"
 policy:
   allow_implicit_invocation: true

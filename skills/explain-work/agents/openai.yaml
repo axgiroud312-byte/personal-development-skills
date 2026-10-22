@@ -1,5 +1,5 @@
 interface:
   display_name: "讲清刚才做了什么"
-  short_description: "用中文讲清刚才的改动、运行方式、选择原因与实际验证范围"
+  short_description: "依据实际成果，用中文解释结果、变化原因、关键流程和验证范围"
 policy:
   allow_implicit_invocation: true

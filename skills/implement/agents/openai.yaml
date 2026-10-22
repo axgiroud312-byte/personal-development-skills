@@ -1,5 +1,5 @@
 interface:
   display_name: "完成一项开发"
-  short_description: "沿用设计、样板与前端选型完成单项任务，实际验证并交付清理"
+  short_description: "完成单项实施与验证，按独立交付或主 Agent 分工回交结果"
 policy:
   allow_implicit_invocation: true

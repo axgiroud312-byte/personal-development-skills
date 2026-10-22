@@ -1,5 +1,5 @@
 interface:
   display_name: "理清需求"
-  short_description: "澄清需求与关键选择，按需记录，并衔接领域检查和界面设计"
+  short_description: "通过场景与关键选择澄清需求，按需记录结论并交接已有依据与未知项"
 policy:
   allow_implicit_invocation: true
