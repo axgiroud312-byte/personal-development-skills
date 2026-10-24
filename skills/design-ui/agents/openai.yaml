@@ -1,5 +1,5 @@
 interface:
   display_name: "设计界面与交互"
-  short_description: "生成本地 Designer 项目，依次交付 Token、设计板与可操作原型，界面文案保持克制"
+  short_description: "明确设计好坏，在 docs/design 交付 Token 说明和设计板，展示页面与必要交互"
 policy:
   allow_implicit_invocation: true
