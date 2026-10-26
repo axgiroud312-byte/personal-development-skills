@@ -1,5 +1,5 @@
 interface:
   display_name: "设计界面与交互"
-  short_description: "明确设计好坏，在 docs/design 交付 Token 说明和设计板，展示页面与必要交互"
+  short_description: "先制作设计板并检查效果，再提取 Token，统一页面交互与可复用设计规则"
 policy:
   allow_implicit_invocation: true

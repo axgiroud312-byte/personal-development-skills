@@ -1,5 +1,5 @@
 interface:
   display_name: "拆分项目任务"
-  short_description: "拆分设计、准备与实现任务，明确交付和验收，建立真实前置依赖"
+  short_description: "依据当前目标与相关规格拆任务，明确局部设计、验收及跨规格依赖"
 policy:
   allow_implicit_invocation: true
