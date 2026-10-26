@@ -1,5 +1,5 @@
 interface:
   display_name: "理清需求"
-  short_description: "每题提供两个或更多选项，不附建议或说明，澄清需求并按需记录结论"
+  short_description: "通过场景与关键选择澄清需求，按需记录结论并交接已有依据与未知项"
 policy:
   allow_implicit_invocation: true

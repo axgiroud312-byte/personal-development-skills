@@ -1,5 +1,5 @@
 interface:
   display_name: "连续完成整套开发"
-  short_description: "按阶段持续推进一份或多份规格，统一任务依赖、整合与有界交付"
+  short_description: "持续推进多个任务，统一分工与依赖，由主 Agent 整合并完成整体交付"
 policy:
   allow_implicit_invocation: true
