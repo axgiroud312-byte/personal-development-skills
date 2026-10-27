@@ -1,5 +1,6 @@
 interface:
   display_name: "制作完整前端原型"
-  short_description: "按指定参考呈现整套页面、交互与视觉，交付 HTML 原型和设计 Token"
+  short_description: "按指定参考呈现整套页面与交互，交付完整 HTML 原型和设计 Token"
+  default_prompt: "使用 $design-ui 按我的参考制作完整前端原型和对应设计 Token。"
 policy:
   allow_implicit_invocation: true

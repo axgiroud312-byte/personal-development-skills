@@ -1,5 +1,6 @@
 interface:
   display_name: "完成一项开发"
-  short_description: "集中实现明确任务，收尾做必要验证，按授权或主 Agent 分工交付"
+  short_description: "集中完成明确功能或修复，在授权目标收尾验证并按约定交付成果"
+  default_prompt: "使用 $implement 完成本次任务，按现有项目约定实现并交付。"
 policy:
   allow_implicit_invocation: true

@@ -1,5 +1,6 @@
 interface:
   display_name: "讲清刚才做了什么"
-  short_description: "依据实际成果解释结果、原因、关键流程和验证范围"
+  short_description: "依据实际成果讲清结果、原因与关键运作方式，说明真实验证范围"
+  default_prompt: "使用 $explain-work 用清楚的中文解释刚才的改动、原因与使用方式。"
 policy:
   allow_implicit_invocation: true

@@ -5,7 +5,7 @@ description: 按计划、一份或多份 Spec 或一组 Issue 连续完成开发
 
 # 连续完成整套开发
 
-**先读取同版本的 [implement](../implement/SKILL.md)**，复用其开发节奏、工作保护、收尾验证、授权交付与清理方法；下面只补充整体负责人职责。两者需一起安装；若该路径缺失，先在已安装技能中定位同源同版本的 `implement`。仍缺失时说明依赖，并用 `npx skills@latest add axgiroud312-byte/personal-development-skills --skill implement implement-spec` 补齐（按当前 Agent 和全局/项目范围选择安装参数）；未取得正文前不凭猜测省略执行规则。
+**先读取同版本的 [implement](../implement/SKILL.md)**，复用开发节奏、工作保护、收尾验证、交付与清理方法。这里仅补充整体负责人职责；两者需配套安装。
 
 以代码和实际行为核实现状，以已确认的新需求确定目标。直接接手已有材料与进度，不要求先跑整套技能。
 
@@ -29,3 +29,11 @@ description: 按计划、一份或多份 Spec 或一组 Issue 连续完成开发
 在授权目标或明确的独立交付阶段收尾时，统一按 `implement` 选择必要验证并处理发现的问题，重点核对跨规格一致性和模块衔接。不能删掉未实现需求来宣称完成。
 
 主 Agent 统一交付、维护唯一项目状态和安排清理。按可审查范围维护一个或多个 PR，Spec、Issue、PR 不必一一对应；交付任务与成果的对应关系、试用入口、实际验证状态和剩余阻碍。区分设计完成、代码已回交、待验证、分支可用、主线可用与用户验收。
+
+## 引用缺失时
+
+先在已安装技能中定位同源同版本的 `implement`；仍缺失则说明依赖，补齐两者后再执行，不凭猜测省略规则。安装命令如下，按当前 Agent 和全局/项目范围补充参数：
+
+```sh
+npx skills@latest add axgiroud312-byte/personal-development-skills --skill implement implement-spec
+```

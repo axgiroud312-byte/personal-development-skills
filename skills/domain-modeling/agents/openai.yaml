@@ -1,5 +1,6 @@
 interface:
   display_name: "理清业务概念"
-  short_description: "统一当前范围的业务对象、关系、状态与规则，复用已有定义"
+  short_description: "理清当前业务对象、关系和规则，复用已有定义并标明真正歧义"
+  default_prompt: "使用 $domain-modeling 理清本次需求中的业务对象、关系与规则。"
 policy:
   allow_implicit_invocation: true
