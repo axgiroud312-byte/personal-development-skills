@@ -1,5 +1,5 @@
 interface:
   display_name: "拆分项目任务"
-  short_description: "把计划变成可接手的 Issue，写清三项需求、局部方案与真实依赖"
+  short_description: "按可用结果拆 Issue，写清目标、局部方案、依赖和预期表现"
 policy:
   allow_implicit_invocation: true

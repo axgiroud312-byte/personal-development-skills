@@ -1,5 +1,5 @@
 interface:
   display_name: "理清业务概念"
-  short_description: "统一对象、关系、状态和业务规则，只补当前方案与实施需要的缺口"
+  short_description: "统一当前范围的业务对象、关系、状态与规则，复用已有定义"
 policy:
   allow_implicit_invocation: true

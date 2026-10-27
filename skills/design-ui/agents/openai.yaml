@@ -1,5 +1,5 @@
 interface:
   display_name: "制作完整前端原型"
-  short_description: "呈现整套页面、层级、导航、视觉与动效，直接交付 HTML 和 Token"
+  short_description: "按指定参考呈现整套页面、交互与视觉，交付 HTML 原型和设计 Token"
 policy:
   allow_implicit_invocation: true

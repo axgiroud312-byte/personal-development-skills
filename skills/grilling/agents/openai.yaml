@@ -1,5 +1,5 @@
 interface:
   display_name: "理清需求"
-  short_description: "每次用清楚选项解决关键选择，保留已确认含义，按需记录与交接"
+  short_description: "每题提供两个或更多选项，不附建议或说明，整理已定结论"
 policy:
   allow_implicit_invocation: true

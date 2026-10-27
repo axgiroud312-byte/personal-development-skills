@@ -1,5 +1,5 @@
 interface:
   display_name: "整理需求规格"
-  short_description: "说明想实现、想要与不想要的内容，补齐整体技术方案和完成标准"
+  short_description: "按范围整理整体方案、模块协作、依赖与可观察结果"
 policy:
   allow_implicit_invocation: true

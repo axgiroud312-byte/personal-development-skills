@@ -1,5 +1,5 @@
 interface:
   display_name: "连续完成整套开发"
-  short_description: "复用单项实施方法，管理依赖、分工与整合，统一收尾和整体交付"
+  short_description: "复用 implement，统一多任务依赖、整合、收尾和整体交付"
 policy:
   allow_implicit_invocation: true

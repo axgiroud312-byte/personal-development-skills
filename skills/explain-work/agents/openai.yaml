@@ -1,5 +1,5 @@
 interface:
   display_name: "讲清刚才做了什么"
-  short_description: "依据真实成果解释用途、变化原因、运作方式和实际验证范围"
+  short_description: "依据实际成果解释结果、原因、关键流程和验证范围"
 policy:
   allow_implicit_invocation: true

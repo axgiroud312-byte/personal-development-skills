@@ -1,5 +1,5 @@
 interface:
   display_name: "完成一项开发"
-  short_description: "集中完成单项功能与修复，按分工回交实现，必要验证留到目标收尾"
+  short_description: "集中实现明确任务，收尾做必要验证，按授权或主 Agent 分工交付"
 policy:
   allow_implicit_invocation: true

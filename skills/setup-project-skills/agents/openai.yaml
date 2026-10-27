@@ -1,5 +1,5 @@
 interface:
   display_name: "配置项目约定与索引"
-  short_description: "核实真实文件与命令，记录少量长期约定并维护唯一项目状态入口"
+  short_description: "核实文件和命令，维护简短索引与唯一状态入口"
 policy:
   allow_implicit_invocation: true
