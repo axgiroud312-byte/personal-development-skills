@@ -1,6 +1,6 @@
 interface:
-  display_name: "制作完整前端原型"
-  short_description: "按指定参考呈现整套页面与交互，交付完整 HTML 原型和设计 Token"
-  default_prompt: "使用 $design-ui 按我的参考制作完整前端原型和对应设计 Token。"
+  display_name: "设计结构与前端原型"
+  short_description: "按需先画结构草图，统一 Token 后完成页面，按范围交付草图或完整原型"
+  default_prompt: "使用 $design-ui 按我的范围和参考设计界面：按需先做结构草图，完整设计先统一 Token，再交付 HTML 原型和实际 Token 文档。"
 policy:
   allow_implicit_invocation: true

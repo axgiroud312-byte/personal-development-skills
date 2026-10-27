@@ -12,7 +12,7 @@
 | 一组需要分工、跟踪的工作 | [to-tickets](skills/to-tickets/SKILL.md) | 有目标、局部方案、依赖与预期结果的 Issue |
 | 按目标连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 统一安排依赖、整合、收尾与整体交付 |
 | 需要先理清整体方案 | [to-spec](skills/to-spec/SKILL.md) | 一份或多份适合范围的规格 |
-| 需要先看完整前端效果 | [design-ui](skills/design-ui/SKILL.md) | 可交互 HTML 原型与实际设计 Token |
+| 需要理清页面结构或看完整前端效果 | [design-ui](skills/design-ui/SKILL.md) | 按范围交结构草图，或完整 HTML 原型与实际 Token 文档 |
 | 想法或关键选择尚不清楚 | [grilling](skills/grilling/SKILL.md) | 问题与选项、已定结论及未知项 |
 | 业务对象、关系或规则有歧义 | [domain-modeling](skills/domain-modeling/SKILL.md) | 当前范围的统一业务定义 |
 | 需要配置项目入口 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 简短项目索引与唯一状态入口 |
@@ -46,9 +46,9 @@
 
 ## 完整前端原型
 
-`design-ui` 按用户指定参考、组件和视觉要求，覆盖本次范围内全部页面与子页，呈现导航、布局、打开方式、信息密度、分页、字体字重、背景配色、组件状态和可重看的动效。轻量交互让用户看懂产品关系，正式路由、后端和持久化留给业务实现。
+`design-ui` 按需先用一次性 HTML 草图或 ASCII 线框明确页面层级、导航与内容尺寸、分栏、密度和打开关系；只要求草图就按范围交付，已授权完整设计则继续，不默认停等批准。结构明确后先复用或定义实际 Token，再制作组件与页面；完整原型保留指定参考、全部页面与子页、分页、字体字重、背景配色、状态和可重看的动效，正式业务接入留给实现。
 
-默认只交付 `docs/design/design-board.html` 和 `docs/design/design-token.md`。HTML 先展示产品页面，组件、库、字体、参考与模拟限制放在折叠说明区；Token 从实际样式提取。做好即交付，不等批准或附加质量报告，反馈修改时同步两者。
+完整设计默认只交付 `docs/design/design-board.html` 和 `docs/design/design-token.md`。草图可完善为最终 HTML 或由其接替，无需长期维护两套。HTML 先展示产品页面，来源与模拟限制放在折叠说明区；样式变量先定义、组件统一引用，Token 文档在完成后从实际样式整理。做好即交付，反馈修改时同步，不附加质量报告。
 
 ## 模板与设计参考
 
@@ -56,7 +56,8 @@
 | --- | --- |
 | [Spec 模板](skills/to-spec/references/spec-template.md) | 本次想实现什么、想要什么、不想要什么，以及业务、技术方案、依赖和结果 |
 | [Issue 模板](skills/to-tickets/references/issue-template.md) | 同样先说明三问，再写可接手的局部方案、依赖、预期结果和实际交接 |
-| [好坏设计参考](skills/design-ui/references/design-quality.md) | 用具体好坏对照帮助制作，不作为验收清单 |
+| [好坏设计参考](skills/design-ui/references/design-quality.md) | 用具体好坏对照帮助判断视觉取舍，不作为验收清单 |
+| [设计系统与组件规则](skills/design-ui/references/design-system.md) | 制作前读取，统一 Token、排版间距、组件、状态与适配；已有约定优先 |
 
 使用时按范围裁剪或映射已有模板，不为填空发明内容。
 
