@@ -72,7 +72,7 @@ npx skills@latest remove grill-with-docs --agent codex -g
 | --- | --- |
 | 帮我把这个想法问清楚／边聊边记录 | `grilling`：每题只给问题与两个或更多选项，不附建议或说明，按需记录结论 |
 | 统一一下业务术语和关系 | `domain-modeling`：检查并补齐业务定义、关系和规则 |
-| 设计一下界面／制作设计板 | `design-ui`：统一负责设计板与 Token，先做页面和交互，再整理实际采用的设计规则 |
+| 设计一下界面／制作设计板 | `design-ui`：各类前端统一用 HTML 概略展示结构，重点演示组件、状态和动效，再提取 Token |
 | 把需求或 PRD 写成 Spec | `to-spec`：按范围组织一份或多份规格，补齐技术方案、协作与完成标准 |
 | 根据这段计划直接拆任务 | `to-tickets`：依据当前目标与相关规格拆分设计、准备和实施任务，细化交付、依赖和验收 |
 | 把这个问题修好／完成这项任务 | `implement`：完成单项实施与验证，按授权或主 Agent 分工交付 |
@@ -86,7 +86,7 @@ npx skills@latest remove grill-with-docs --agent codex -g
 
 `grilling` 负责开放讨论与关键选择，默认一次一个问题，每题只给问题和两个或更多清楚、可区分的选项，不附推荐、理由或额外说明；`to-spec` 直接复用已定需求，只补当前范围内阻止方案定稿的缺口。技术模块设计前核对业务定义，已有领域模型足够时直接引用，不足时按需使用 `domain-modeling` 或等价梳理。事实由 Agent 调查，可逆细节自行判断，只有无法调查解决且影响目标或整体方案的用户选择才提问。
 
-涉及 UI 时，统一由 `design-ui` 与 Spec 往返配合。先在 **`docs/design/design-board.html`** 展示配色、排版、组件、完整页面与必要交互，检查效果后，再把实际采用的颜色、字体、尺寸等整理进 **`docs/design/design-token.md`**。两份成果由同一技能完成；已有设计与项目定制优先沿用，后续开发复用实际样式和组件。具体要求见 [design-ui 主文件](skills/design-ui/SKILL.md)。个人的技术栈、组件与视觉偏好统一维护在全局 `AGENTS.md`，当前任务的明确要求优先。
+网页、Web 应用、后台、桌面 GUI、移动端等前端设计都由 `design-ui` 使用 **`docs/design/design-board.html`** 展示。整体布局、页面导航和列表分页做概略表达，重点呈现组件样式、状态与动效；静态样例和少量 CSS／JavaScript 演示即可，不默认实现完整应用、真实业务、正式路由或后端。检查展示效果后，再把实际采用的设计规则整理进 **`docs/design/design-token.md`**。两份成果由同一技能完成，沿用已有设计与可用资源；HTML 是展示方式，不改变产品最终技术选型。具体要求见 [design-ui 主文件](skills/design-ui/SKILL.md)。个人的技术栈、组件与视觉偏好统一维护在全局 `AGENTS.md`，当前任务的明确要求优先。
 
 设计判断单独放在[设计质量参考](skills/design-ui/references/design-quality.md)：说明好设计的依据、坏设计的具体表现，以及哪些必要信息应当保留。`design-ui` 在开始设计和交付检查时读取它。Token 从采用的设计与源码提取，已有变量可先用于制作设计板；shadcn 的初始化、搜索、配置和安装等具体操作交给它自己的 Skill。
 
