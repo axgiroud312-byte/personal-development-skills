@@ -1,5 +1,5 @@
 interface:
   display_name: "连续完成整套开发"
-  short_description: "持续推进一份或多份规格的任务，统一依赖与整合，完成已授权目标"
+  short_description: "持续推进规格与任务，统一依赖和整合，在授权目标收尾集中安排必要验证"
 policy:
   allow_implicit_invocation: true
