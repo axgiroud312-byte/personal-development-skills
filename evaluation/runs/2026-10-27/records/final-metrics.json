@@ -1,0 +1,17 @@
+{
+  "baseline_chars": 33084,
+  "final_chars": 19791,
+  "reduction_percent": 40.2,
+  "files": 14,
+  "skill_lines": {
+    "design-ui": 52,
+    "domain-modeling": 17,
+    "explain-work": 16,
+    "grilling": 29,
+    "implement": 39,
+    "implement-spec": 39,
+    "setup-project-skills": 42,
+    "to-spec": 29,
+    "to-tickets": 32
+  }
+}

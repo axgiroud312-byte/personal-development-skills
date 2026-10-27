@@ -1,0 +1,19 @@
+{
+  "independent_skill_directories": [
+    "design-ui",
+    "domain-modeling",
+    "explain-work",
+    "grilling",
+    "implement",
+    "setup-project-skills",
+    "to-spec",
+    "to-tickets"
+  ],
+  "independent_count": 8,
+  "declared_dependency": "implement-spec requires implement",
+  "missing_companion_detected": [
+    "SKILL.md:../implement/SKILL.md"
+  ],
+  "paired_copy_and_symlink_reference_resolution": "pass",
+  "limits": "Directory-layout simulation based on installer source; not an actual npx installation."
+}

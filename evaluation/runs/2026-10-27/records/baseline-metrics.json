@@ -1,0 +1,82 @@
+{
+  "EVALUATION.md": {
+    "lines": 68,
+    "chars": 2639,
+    "bytes": 6437
+  },
+  "AGENTS.md": {
+    "lines": 16,
+    "chars": 1862,
+    "bytes": 4804
+  },
+  "README.md": {
+    "lines": 172,
+    "chars": 7516,
+    "bytes": 17042
+  },
+  "evaluation/ten-rounds-2026-10-26.md": {
+    "lines": 47,
+    "chars": 2481,
+    "bytes": 5133
+  },
+  "skills/implement/SKILL.md": {
+    "lines": 55,
+    "chars": 2212,
+    "bytes": 5920
+  },
+  "skills/domain-modeling/SKILL.md": {
+    "lines": 19,
+    "chars": 842,
+    "bytes": 2198
+  },
+  "skills/implement-spec/SKILL.md": {
+    "lines": 50,
+    "chars": 2505,
+    "bytes": 6665
+  },
+  "skills/grilling/SKILL.md": {
+    "lines": 35,
+    "chars": 1099,
+    "bytes": 2943
+  },
+  "skills/design-ui/SKILL.md": {
+    "lines": 84,
+    "chars": 3639,
+    "bytes": 9863
+  },
+  "skills/to-tickets/SKILL.md": {
+    "lines": 40,
+    "chars": 1768,
+    "bytes": 4574
+  },
+  "skills/setup-project-skills/SKILL.md": {
+    "lines": 49,
+    "chars": 1955,
+    "bytes": 5127
+  },
+  "skills/to-spec/SKILL.md": {
+    "lines": 40,
+    "chars": 1809,
+    "bytes": 4769
+  },
+  "skills/explain-work/SKILL.md": {
+    "lines": 33,
+    "chars": 1075,
+    "bytes": 2903
+  },
+  "skills/design-ui/references/design-quality.md": {
+    "lines": 73,
+    "chars": 2860,
+    "bytes": 7514
+  },
+  "skills/to-tickets/references/issue-template.md": {
+    "lines": 80,
+    "chars": 1903,
+    "bytes": 4711
+  },
+  "skills/to-spec/references/spec-template.md": {
+    "lines": 82,
+    "chars": 2039,
+    "bytes": 5071
+  }
+}

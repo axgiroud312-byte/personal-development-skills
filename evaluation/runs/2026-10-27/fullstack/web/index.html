@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>设备清单</title>
+<style>body{font:16px system-ui;max-width:720px;margin:40px auto;color:#182628;background:#f4f5f2}form{display:flex;gap:8px}input,button{padding:10px}li{padding:12px;border-bottom:1px solid #ccd4cb}#message{min-height:24px}</style>
+<h1>设备清单</h1><form id="create-form"><label>设备名 <input id="name" name="name"></label><button>新增</button></form>
+<p id="message" role="status"></p><ul id="items"></ul>
+<script>
+const list = document.querySelector('#items');
+const form = document.querySelector('#create-form');
+const nameInput = document.querySelector('#name');
+const button = form.querySelector('button');
+const message = document.querySelector('#message');
+let items = [];
+let busy = false;
+function render(items){ list.replaceChildren(...items.map(item=>{const li=document.createElement('li');li.textContent=item.name;return li;})); }
+
+function setBusy(value) {
+  busy = value;
+  button.disabled = value;
+  nameInput.disabled = value;
+  form.setAttribute('aria-busy', String(value));
+}
+
+async function readItems() {
+  const response = await fetch('/api/items', {cache: 'no-store'});
+  const data = await response.json();
+  if (!response.ok || !Array.isArray(data.items)) throw new Error('load_failed');
+  items = data.items;
+  render(items);
+}
+
+async function loadItems() {
+  setBusy(true);
+  message.textContent = '正在加载设备…';
+  try {
+    await readItems();
+    message.textContent = items.length ? '' : '暂无设备，可以新增第一台设备。';
+  } catch {
+    message.textContent = '设备列表加载失败，请确认服务已启动后刷新页面。';
+  } finally {
+    setBusy(false);
+  }
+}
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (busy) return;
+  if (!nameInput.value.trim()) {
+    message.textContent = '请输入设备名，名称不能只包含空白。';
+    nameInput.focus();
+    return;
+  }
+
+  setBusy(true);
+  message.textContent = '正在保存设备…';
+  try {
+    const response = await fetch('/api/items', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name: nameInput.value})
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      const errors = {
+        name_required: '请输入设备名，名称不能只包含空白。',
+        invalid_json: '提交内容无效，请重试。',
+        storage_error: '设备保存失败，输入已保留，请稍后重试。'
+      };
+      message.textContent = errors[data.error] || '新增失败，输入已保留，请稍后重试。';
+      return;
+    }
+
+    items.push(data.item);
+    render(items);
+    nameInput.value = '';
+    message.textContent = `已新增“${data.item.name}”。`;
+    try {
+      await readItems();
+    } catch {
+      message.textContent = '设备已保存，但列表刷新失败，请刷新页面查看。';
+    }
+  } catch {
+    message.textContent = '无法确认保存结果，输入已保留。请确认服务连接并刷新页面检查后重试。';
+  } finally {
+    setBusy(false);
+    nameInput.focus();
+  }
+});
+
+loadItems();
+</script></html>

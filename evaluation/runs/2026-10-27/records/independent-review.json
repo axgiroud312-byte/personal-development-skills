@@ -1,0 +1,71 @@
+{
+  "rubric_version": "v2",
+  "evaluator": "independent_review",
+  "method": "Static reading; no pilot outputs shown to evaluator",
+  "dimensions": [
+    "practical_delivery/35",
+    "connectivity_independence/20",
+    "requirements_method/20",
+    "lightweight_readability/15",
+    "configuration_extensibility/10"
+  ],
+  "scores": {
+    "BASE": {
+      "total": 88,
+      "parts": [
+        32,
+        17,
+        20,
+        10,
+        9
+      ]
+    },
+    "A1": {
+      "total": 94,
+      "parts": [
+        33,
+        20,
+        20,
+        13,
+        8
+      ]
+    },
+    "B1": {
+      "total": 94,
+      "parts": [
+        34,
+        20,
+        20,
+        13,
+        7
+      ]
+    },
+    "C2": {
+      "total": 98,
+      "parts": [
+        35,
+        20,
+        20,
+        13,
+        10
+      ]
+    },
+    "C3": {
+      "total": 98,
+      "parts": [
+        35,
+        20,
+        20,
+        13,
+        10
+      ]
+    }
+  },
+  "C3_basis": "Five changed files reviewed; unchanged files rely on complete C2 review. References avoid copying public contracts; missing producer skill does not block planning; all hard requirements preserved.",
+  "C3_remaining": [
+    "Short reminders repeat across standalone skills",
+    "Some long multi-condition paragraphs",
+    "Ambiguous product intent should still be clarified using opening gap rule"
+  ],
+  "limits": "These are static scores, not external validation or task success rates."
+}

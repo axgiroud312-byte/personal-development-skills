@@ -1,0 +1,104 @@
+{
+  "rubric": [
+    "scope/20",
+    "facts_unknowns_intent/20",
+    "contracts_persistence_results/25",
+    "dependencies_handoff/20",
+    "lightweight_choice_burden/15"
+  ],
+  "evaluator": "planning_judge",
+  "blind": true,
+  "round_1": {
+    "output-r": {
+      "condition": "old",
+      "score": 95,
+      "parts": [
+        20,
+        20,
+        23,
+        18,
+        14
+      ],
+      "files": 6,
+      "issues": 4,
+      "chars": 13070,
+      "findings": [
+        "Centralized contracts",
+        "Balanced amount of detail",
+        "Technical carrier decision ownership could be clearer"
+      ]
+    },
+    "output-k": {
+      "condition": "C2",
+      "score": 92,
+      "parts": [
+        20,
+        20,
+        22,
+        19,
+        11
+      ],
+      "files": 7,
+      "issues": 5,
+      "chars": 18195,
+      "findings": [
+        "Strong scope ownership and real dependencies",
+        "Repeated common rules",
+        "Reversible carrier choice adds confirmation burden"
+      ]
+    },
+    "output-m": {
+      "condition": "without",
+      "score": 81,
+      "parts": [
+        20,
+        18,
+        20,
+        14,
+        9
+      ],
+      "files": 10,
+      "issues": 8,
+      "chars": 14983,
+      "findings": [
+        "Multiple reversible uncertainties combined into a global block",
+        "Settings data contract incomplete",
+        "Contract content spread across extra documents"
+      ]
+    }
+  },
+  "additional_root_review_C2": [
+    "Spec invented design artifact names and JSON Token format conflicting with producer default; not included as a separate blind-score deduction"
+  ],
+  "round_2": {
+    "output-s": {
+      "condition": "C3",
+      "score": 96,
+      "parts": [
+        20,
+        20,
+        23,
+        19,
+        14
+      ],
+      "files": 5,
+      "issues": 3,
+      "chars": 10547,
+      "qualified": true,
+      "findings": [
+        "Runtime approach and owning task clear",
+        "Results C1-C12 allocated to issues without copying the contract",
+        "No reversible-choice confirmation gate",
+        "Design formats not invented and absent design affects only dependent UI work"
+      ],
+      "remaining": [
+        "Exact money JSON type exclusions",
+        "Unicode name-length unit",
+        "Detail URL routing and server handoff",
+        "Producer without a preexisting convention should choose and link an accessible format"
+      ],
+      "no_hard_failure": true
+    }
+  },
+  "limits": "One planning case, one run per condition; an iterative same-case retest, not statistical evidence or held-out generalization."
+}

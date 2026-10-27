@@ -1,0 +1,21 @@
+{
+  "category_axes": [
+    "reuse topology",
+    "lookup cost"
+  ],
+  "archive": {
+    "inline_core/one_direct_reference": {
+      "id": "C3",
+      "score": 98,
+      "delivery_qualified": true
+    },
+    "separate_reference/two_direct_reads": {
+      "id": "B1",
+      "score": 94,
+      "static_qualified": true
+    }
+  },
+  "note": "Quality scores and feature categories are separate. All submissions and failed C2 remain recorded; B1 retained for diversity, not selected for delivery.",
+  "current_selection": "C3",
+  "selection_basis": "Highest qualified static score, with improved actual planning output and unchanged execution/design pilots."
+}

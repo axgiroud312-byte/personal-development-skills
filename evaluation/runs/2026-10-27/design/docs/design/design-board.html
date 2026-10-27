@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>订阅管理 · 桌面原型</title>
+  <style>
+    :root {
+      /* 从指定参考继承的变量名与值。 */
+      --bg: #f7f7f2;
+      --text: #17251f;
+      --accent: #28775b;
+      --nav-width: 224px;
+      --row-height: 44px;
+      --motion-duration: 200ms;
+
+      --surface: #ffffff;
+      --surface-subtle: #f1f4ee;
+      --surface-hover: #f4f7f1;
+      --muted: #617067;
+      --border: #d6ded7;
+      --border-strong: #b7c5bc;
+      --accent-soft: #e7f0e8;
+      --accent-hover: #206249;
+      --accent-pressed: #194e3a;
+      --focus: rgba(40, 119, 91, .22);
+      --warning: #946315;
+      --warning-bg: #fff3da;
+      --neutral: #5f6b64;
+      --neutral-bg: #edf0ec;
+      --danger: #a83d35;
+      --danger-bg: #fff4f1;
+      --backdrop: rgba(23, 37, 31, .28);
+
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-weight-body: 400;
+      --font-weight-heading: 700;
+      --font-size-xs: 12px;
+      --font-size-sm: 13px;
+      --font-size-base: 14px;
+      --font-size-lg: 16px;
+      --font-size-metric: 24px;
+      --font-size-title: 28px;
+      --line-height-body: 1.5;
+      --line-height-heading: 1.25;
+      --tracking-heading: -.025em;
+      --tracking-meta: .01em;
+
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --page-padding: 32px;
+      --control-height: 36px;
+      --nav-item-height: 40px;
+      --toolbar-height: 56px;
+      --pager-height: 60px;
+      --settings-width: 880px;
+      --modal-width: 480px;
+      --drawer-width: 384px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --border-width: 1px;
+      --focus-width: 3px;
+      --shadow-modal: 0 20px 64px rgba(23, 37, 31, .18);
+      --shadow-drawer: -12px 0 48px rgba(23, 37, 31, .14);
+      --shadow-toast: 0 6px 24px rgba(23, 37, 31, .14);
+      --motion-easing: ease-out;
+      --motion-delay: 0ms;
+      --hover-duration: 120ms;
+      --z-sidebar: 10;
+      --z-toast: 30;
+      --disabled-opacity: .45;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 1080px;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: var(--nav-width) minmax(0, 1fr);
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-body);
+      line-height: var(--line-height-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input, select { font: inherit; color: inherit; }
+    button, select, input[type="checkbox"], input[type="radio"] { cursor: pointer; }
+    button { -webkit-tap-highlight-color: transparent; }
+    button:disabled, select:disabled, input:disabled { cursor: not-allowed; opacity: var(--disabled-opacity); }
+    input, select { accent-color: var(--accent); }
+    :focus-visible { outline: var(--focus-width) solid var(--focus); outline-offset: 2px; }
+    h1, h2, h3, p, dl, dd { margin: 0; }
+    h1, h2, h3, strong { font-weight: var(--font-weight-heading); }
+    h1 { font-size: var(--font-size-title); line-height: var(--line-height-heading); letter-spacing: var(--tracking-heading); }
+    h2 { font-size: 20px; line-height: var(--line-height-heading); letter-spacing: var(--tracking-heading); }
+    h3 { font-size: var(--font-size-lg); line-height: var(--line-height-heading); }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    .icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: 0 0 auto; }
+    .muted { color: var(--muted); }
+    .small { font-size: var(--font-size-xs); }
+    .numeric { font-variant-numeric: tabular-nums; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    .sidebar { position: sticky; top: 0; height: 100vh; padding: var(--space-6) var(--space-4); border-right: var(--border-width) solid var(--border); display: flex; flex-direction: column; z-index: var(--z-sidebar); background: var(--bg); }
+    .brand { display: flex; gap: var(--space-3); align-items: center; padding: 0 var(--space-2); height: 36px; margin-bottom: 38px; }
+    .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--radius-md); color: var(--surface); background: var(--accent); }
+    .brand-mark .icon { width: 21px; height: 21px; }
+    .brand-name { font-size: 19px; font-weight: var(--font-weight-heading); letter-spacing: -.02em; }
+    .nav-label { font-size: var(--font-size-xs); color: var(--muted); letter-spacing: var(--tracking-meta); padding: 0 var(--space-3); margin-bottom: var(--space-3); }
+    .nav-item, .nav-subitem { border: 0; width: 100%; min-height: var(--nav-item-height); display: flex; align-items: center; text-align: left; gap: var(--space-3); padding: var(--space-2) var(--space-3); background: transparent; border-radius: var(--radius-md); transition: background var(--hover-duration) var(--motion-easing); }
+    .nav-item:hover, .nav-subitem:hover { background: var(--surface-subtle); }
+    .nav-item.active, .nav-subitem.active { background: var(--accent-soft); color: var(--accent); font-weight: var(--font-weight-heading); }
+    .nav-item.parent-active { color: var(--accent); }
+    .nav-settings { margin-top: var(--space-3); }
+    .nav-chevron { width: 14px; height: 14px; margin-left: auto; }
+    .nav-children { margin: var(--space-1) 0 0 21px; padding-left: 13px; border-left: var(--border-width) solid var(--border); display: grid; gap: var(--space-1); }
+    .nav-subitem { min-height: 36px; font-size: var(--font-size-sm); padding-left: var(--space-3); }
+    .sidebar-bottom { margin-top: auto; padding: var(--space-5) var(--space-2) 0; border-top: var(--border-width) solid var(--border); }
+    .demo-label { display: flex; gap: var(--space-2); align-items: center; margin-bottom: var(--space-1); font-size: var(--font-size-sm); }
+    .demo-label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    main { min-width: 0; min-height: 100vh; padding: var(--page-padding); display: flex; flex-direction: column; }
+    #view { flex: 1; }
+    .breadcrumb { display: flex; align-items: center; gap: var(--space-2); font-size: var(--font-size-xs); color: var(--muted); margin-bottom: var(--space-5); min-height: 18px; }
+    .breadcrumb .separator { color: var(--border-strong); }
+    .breadcrumb .current { color: var(--text); }
+    .page-header { display: flex; justify-content: space-between; align-items: center; gap: var(--space-6); margin-bottom: var(--space-6); }
+    .page-description { margin-top: var(--space-2); font-size: var(--font-size-sm); color: var(--muted); }
+    .header-actions, .button-group { display: flex; align-items: center; gap: var(--space-2); }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); min-height: var(--control-height); padding: 0 var(--space-3); border: var(--border-width) solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); white-space: nowrap; line-height: 1; transition: background var(--hover-duration) var(--motion-easing), border-color var(--hover-duration) var(--motion-easing), color var(--hover-duration) var(--motion-easing); }
+    .button:hover:not(:disabled) { background: var(--surface-hover); border-color: var(--muted); }
+    .button:active:not(:disabled) { background: var(--accent-soft); }
+    .button.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+    .button.primary:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .button.primary:active:not(:disabled) { background: var(--accent-pressed); border-color: var(--accent-pressed); }
+    .button.filter-active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .button.icon-button { width: 32px; min-height: 32px; padding: 0; background: transparent; border-color: transparent; }
+    .button.icon-button:hover { background: var(--surface-subtle); border-color: transparent; }
+    .text-button { display: inline-flex; align-items: center; gap: var(--space-1); padding: 0; border: 0; background: transparent; color: var(--accent); line-height: var(--line-height-body); border-radius: var(--radius-sm); }
+    .text-button:hover { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+    .back-button { margin-bottom: var(--space-5); font-size: var(--font-size-sm); color: var(--muted); }
+    .back-button .icon { width: 16px; height: 16px; }
+
+    .panel { border: var(--border-width) solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); }
+    .table-toolbar { min-height: var(--toolbar-height); padding: var(--space-2) var(--space-5); display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); border-bottom: var(--border-width) solid var(--border); }
+    .table-heading { display: flex; align-items: center; gap: var(--space-2); }
+    .table-heading h2 { font-size: var(--font-size-base); letter-spacing: 0; }
+    .count { color: var(--muted); font-size: var(--font-size-xs); }
+    .active-filter-copy { font-size: var(--font-size-xs); color: var(--muted); margin-left: var(--space-3); }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+    th, td { height: var(--row-height); padding: 0 var(--space-5); border-bottom: var(--border-width) solid var(--border); text-align: left; vertical-align: middle; }
+    th { font-size: var(--font-size-xs); font-weight: var(--font-weight-body); color: var(--muted); background: var(--surface-subtle); }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: var(--surface-hover); }
+    .subscription-table col:nth-child(1) { width: 38%; }
+    .subscription-table col:nth-child(2) { width: 18%; }
+    .subscription-table col:nth-child(3) { width: 20%; }
+    .subscription-table col:nth-child(4) { width: 14%; }
+    .subscription-table col:nth-child(5) { width: 10%; }
+    .subscription-table th:last-child, .subscription-table td:last-child { text-align: right; }
+    .service-link { display: inline-flex; align-items: center; gap: var(--space-3); max-width: 100%; padding: 0; border: 0; background: transparent; text-align: left; border-radius: var(--radius-sm); }
+    .service-link:hover .service-name { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .service-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .service-mark { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex: 0 0 auto; background: var(--surface-subtle); border: var(--border-width) solid var(--border); border-radius: var(--radius-sm); color: var(--muted); font-size: 10px; font-weight: var(--font-weight-heading); letter-spacing: -.02em; }
+    .period { color: var(--muted); font-size: var(--font-size-xs); margin-left: var(--space-1); }
+    .status { display: inline-flex; align-items: center; gap: 5px; min-height: 24px; padding: 2px 7px; border-radius: var(--radius-sm); font-size: var(--font-size-xs); white-space: nowrap; }
+    .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .status.active { color: var(--accent); background: var(--accent-soft); }
+    .status.paused { color: var(--warning); background: var(--warning-bg); }
+    .status.cancelled { color: var(--neutral); background: var(--neutral-bg); }
+    .pager { min-height: var(--pager-height); padding: var(--space-3) var(--space-5); border-top: var(--border-width) solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .pager-copy { color: var(--muted); font-size: var(--font-size-xs); }
+    .page-number { min-width: 32px; min-height: 32px; padding: 0 var(--space-2); border-color: transparent; background: transparent; font-size: var(--font-size-sm); }
+    .page-number[aria-current="page"] { color: var(--accent); border-color: var(--border); background: var(--accent-soft); font-weight: var(--font-weight-heading); }
+    .page-arrow { min-height: 32px; font-size: var(--font-size-xs); padding: 0 var(--space-2); }
+    .page-arrow .icon { width: 14px; height: 14px; }
+    .table-note { margin-top: var(--space-3); font-size: var(--font-size-xs); color: var(--muted); }
+    .empty-state { text-align: center; padding: 48px var(--space-6); }
+    .empty-state .icon { width: 28px; height: 28px; color: var(--muted); margin-bottom: var(--space-3); }
+    .empty-state h3 { font-size: var(--font-size-base); }
+    .empty-state p { font-size: var(--font-size-sm); color: var(--muted); margin: var(--space-2) 0 var(--space-4); }
+
+    .detail-heading { display: flex; align-items: center; gap: var(--space-4); }
+    .detail-heading .service-mark { width: 48px; height: 48px; border-radius: var(--radius-lg); font-size: var(--font-size-lg); background: var(--surface); }
+    .tabs { display: flex; gap: var(--space-6); border-bottom: var(--border-width) solid var(--border); margin-bottom: var(--space-6); }
+    .tab { border: 0; border-bottom: 2px solid transparent; background: transparent; min-height: 44px; padding: 0 var(--space-1); color: var(--muted); }
+    .tab:hover { color: var(--text); }
+    .tab[aria-selected="true"] { border-bottom-color: var(--accent); color: var(--accent); font-weight: var(--font-weight-heading); }
+    .tab-count { font-size: var(--font-size-xs); margin-left: var(--space-1); }
+    .panel-heading { padding: var(--space-5) var(--space-6); border-bottom: var(--border-width) solid var(--border); }
+    .panel-heading h2 { font-size: var(--font-size-lg); letter-spacing: 0; }
+    .panel-heading p { margin-top: var(--space-1); font-size: var(--font-size-xs); color: var(--muted); }
+    .detail-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; padding: var(--space-6); border-bottom: var(--border-width) solid var(--border); }
+    .detail-metric { padding: 0 var(--space-6); border-left: var(--border-width) solid var(--border); }
+    .detail-metric:first-child { border-left: 0; padding-left: 0; }
+    .detail-metric dt { color: var(--muted); font-size: var(--font-size-xs); margin-bottom: var(--space-2); }
+    .detail-metric dd { min-height: 32px; display: flex; align-items: center; font-size: var(--font-size-metric); line-height: 1.3; font-weight: var(--font-weight-heading); letter-spacing: var(--tracking-heading); }
+    .detail-metric dd.date-value { font-size: 20px; }
+    .detail-metric .period, .detail-metric .status { font-weight: var(--font-weight-body); letter-spacing: 0; }
+    .detail-info { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6) var(--space-8); padding: var(--space-6); }
+    .detail-info dt { font-size: var(--font-size-xs); color: var(--muted); margin-bottom: var(--space-2); }
+    .detail-info dd { overflow-wrap: anywhere; }
+    .detail-info .wide { grid-column: 1 / -1; }
+    .records-table col:nth-child(1) { width: 24%; }
+    .records-table col:nth-child(2) { width: 22%; }
+    .records-table col:nth-child(3) { width: 36%; }
+    .records-table col:nth-child(4) { width: 18%; }
+    .records-footer { padding: var(--space-4) var(--space-6); color: var(--muted); font-size: var(--font-size-xs); border-top: var(--border-width) solid var(--border); }
+
+    .settings-form { max-width: var(--settings-width); }
+    .setting-row { display: grid; grid-template-columns: minmax(0, 1fr) 240px; align-items: center; gap: var(--space-8); margin: 0 var(--space-6); padding: var(--space-5) 0; border-bottom: var(--border-width) solid var(--border); }
+    .setting-row:last-child { border-bottom: 0; }
+    .setting-label { display: block; margin-bottom: var(--space-1); }
+    .setting-description { font-size: var(--font-size-xs); color: var(--muted); }
+    .control { min-height: var(--control-height); width: 100%; border: var(--border-width) solid var(--border-strong); border-radius: var(--radius-md); padding: 7px 10px; background: var(--surface); line-height: 20px; }
+    .control:hover:not(:disabled) { border-color: var(--muted); }
+    .control:focus { border-color: var(--accent); }
+    .control:user-invalid { border-color: var(--danger); background: var(--danger-bg); }
+    select.control { padding-right: var(--space-8); }
+    input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; margin: 0; flex: 0 0 auto; }
+    .check-label { display: flex; align-items: center; gap: var(--space-2); }
+    .settings-actions { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-top: var(--space-5); }
+    .settings-hint { font-size: var(--font-size-xs); color: var(--muted); }
+    .reminder-preview { margin: var(--space-5) var(--space-6) var(--space-6); padding: var(--space-4); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); background: var(--surface-subtle); font-size: var(--font-size-sm); }
+    .reminder-preview .preview-label { font-size: var(--font-size-xs); color: var(--muted); margin-bottom: var(--space-1); }
+
+    dialog { color: var(--text); background: var(--surface); padding: 0; border: var(--border-width) solid var(--border); overflow: auto; }
+    dialog::backdrop { background: var(--backdrop); animation: backdrop-in var(--motion-duration) var(--motion-easing) var(--motion-delay) both; }
+    dialog.is-closing::backdrop { animation-name: backdrop-out; }
+    .modal { width: var(--modal-width); max-width: calc(100vw - 64px); max-height: calc(100vh - 64px); border-radius: var(--radius-lg); box-shadow: var(--shadow-modal); }
+    .modal[open] { animation: modal-in var(--motion-duration) var(--motion-easing) var(--motion-delay) both; }
+    .modal[open].is-closing { animation-name: modal-out; }
+    .dialog-heading { padding: var(--space-6) var(--space-6) var(--space-5); display: flex; justify-content: space-between; gap: var(--space-4); align-items: flex-start; }
+    .dialog-heading p { color: var(--muted); font-size: var(--font-size-sm); margin-top: var(--space-2); }
+    .dialog-fields { padding: 0 var(--space-6) var(--space-6); display: grid; gap: var(--space-5); }
+    .field label, .field-label { display: block; margin-bottom: var(--space-2); font-size: var(--font-size-sm); }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .input-with-prefix { position: relative; }
+    .input-prefix { position: absolute; left: 11px; top: 8px; color: var(--muted); pointer-events: none; }
+    .input-with-prefix input { padding-left: 29px; }
+    .field-help { font-size: var(--font-size-xs); color: var(--muted); margin-top: var(--space-2); }
+    .dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); padding: var(--space-4) var(--space-6); border-top: var(--border-width) solid var(--border); background: var(--surface-subtle); }
+    .drawer { position: fixed; inset: 0 0 0 auto; width: var(--drawer-width); max-width: var(--drawer-width); height: 100vh; max-height: 100vh; margin: 0; border-radius: 0; border-top: 0; border-right: 0; border-bottom: 0; box-shadow: var(--shadow-drawer); }
+    .drawer[open] { display: flex; flex-direction: column; animation: drawer-in var(--motion-duration) var(--motion-easing) var(--motion-delay) both; }
+    .drawer[open].is-closing { animation-name: drawer-out; }
+    .drawer .dialog-heading { border-bottom: var(--border-width) solid var(--border); }
+    .drawer form { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+    .drawer-body { flex: 1; overflow: auto; padding: var(--space-6); }
+    .filter-group { margin: 0 0 var(--space-8); padding: 0; border: 0; }
+    .filter-group legend { padding: 0; margin-bottom: var(--space-3); font-size: var(--font-size-sm); font-weight: var(--font-weight-heading); }
+    .radio-option { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); margin-bottom: var(--space-2); border: var(--border-width) solid var(--border); border-radius: var(--radius-md); cursor: pointer; }
+    .radio-option:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); }
+    .radio-option:hover { border-color: var(--accent); }
+    .option-count { margin-left: auto; color: var(--muted); font-size: var(--font-size-xs); font-variant-numeric: tabular-nums; }
+    .filter-preview { padding: var(--space-4); margin-top: var(--space-6); border-radius: var(--radius-md); background: var(--surface-subtle); font-size: var(--font-size-sm); color: var(--muted); }
+    .filter-preview strong { color: var(--text); }
+    .drawer .dialog-actions { justify-content: space-between; }
+    .toast { position: fixed; left: calc(50% + var(--nav-width) / 2); bottom: 28px; transform: translateX(-50%); z-index: var(--z-toast); display: flex; align-items: center; gap: var(--space-2); max-width: 600px; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); background: var(--text); color: var(--surface); box-shadow: var(--shadow-toast); font-size: var(--font-size-sm); }
+    .toast[hidden] { display: none; }
+    .sources { margin-top: var(--space-8); padding-top: var(--space-4); border-top: var(--border-width) solid var(--border); color: var(--muted); font-size: var(--font-size-xs); }
+    .sources summary { width: fit-content; cursor: pointer; padding: var(--space-1) 0; border-radius: var(--radius-sm); }
+    .sources-content { max-width: 960px; padding: var(--space-3) 0 var(--space-2); }
+    .sources-content p + p { margin-top: var(--space-2); }
+    .sources-content code { font-size: 11px; color: var(--text); }
+    @keyframes modal-in { from { opacity: 0; transform: translateY(12px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes modal-out { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(12px) scale(.985); } }
+    @keyframes drawer-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    @keyframes drawer-out { from { transform: translateX(0); } to { transform: translateX(100%); } }
+    @keyframes backdrop-in { from { background: transparent; } to { background: var(--backdrop); } }
+    @keyframes backdrop-out { from { background: var(--backdrop); } to { background: transparent; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0ms !important; animation-delay: 0ms !important; transition-duration: 0ms !important; scroll-behavior: auto !important; }
+      dialog::backdrop { animation-duration: 0ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <defs>
+      <symbol id="i-stack" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M7 20h10M8 8h8M8 12h5"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-.8 2.3-2.4.4L4.3 8.3l.9 2.2-.9 2.3 1.5 2.6 2.4.4L9 18h3l.8-2.2 2.4-.4 1.5-2.6-.9-2.3.9-2.2-1.5-2.6-2.4-.4L12 3Z" transform="translate(1.5 1.5)"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M3 12h18"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 7h16M7 12h10M10 17h4"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-empty" viewBox="0 0 24 24"><path d="M4 8h16v12H4zM4 8l3-5h10l3 5M4 13h5l1 3h4l1-3h5"/></symbol>
+    </defs>
+  </svg>
+
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-stack"/></svg></span><span class="brand-name">订阅</span></div>
+    <div class="nav-label">我的工作区</div>
+    <nav aria-label="主导航">
+      <button type="button" class="nav-item active" data-route="list" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>全部订阅</button>
+      <div class="nav-settings">
+        <button type="button" class="nav-item" id="settings-parent" data-route="general"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg>设置<svg class="icon nav-chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+        <div class="nav-children">
+          <button type="button" class="nav-subitem" data-route="general">通用</button>
+          <button type="button" class="nav-subitem" data-route="reminders">提醒</button>
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-bottom"><div class="demo-label">演示工作区</div><p class="small muted">样例数据 · 刷新后恢复</p></div>
+  </aside>
+
+  <main>
+    <div id="view"></div>
+    <details class="sources">
+      <summary>组件与来源</summary>
+      <div class="sources-content">
+        <p><strong>页面范围：</strong>全部订阅（初始 12 条、每页 5 条）、订阅详情的概览与扣款记录、设置的通用与提醒两个子页；新增使用居中弹窗，筛选使用右侧抽屉。导航、返回、分页和页内标签均为本地交互。</p>
+        <p><strong>直接使用：</strong>原生 HTML <code>button / input / select / table / dialog / details</code> 和浏览器表单校验；全部视觉由本文件 CSS 定制。没有第三方组件库、远程脚本、外部图片或字体文件。图标为本文件手绘内联 SVG，名称方块是文字缩写，不是服务官方标志。</p>
+        <p><strong>字体：</strong>实际由操作系统解析 <code>system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif</code>；正文 400，标题及强调 700。没有下载字体或声称加载某个指定字体文件；中文随系统回退，具体字形和可用字重因系统而异。</p>
+        <p><strong>参考：</strong>项目内 <a href="../../design-reference.html">design-reference.html</a> 的左侧导航、紧凑工具栏、表格比例，以及 <code>--bg / --text / --accent / --nav-width / --row-height / --motion-duration</code>；设计组织采用指定 <code>design-ui</code> 技能及其配套设计参考。具体值见同目录 <a href="design-token.md">design-token.md</a>。</p>
+        <p><strong>模拟限制：</strong>服务名称、金额、日期和扣款记录均为演示样例，不代表服务实际定价或交易。新增、筛选和设置只保存在本页内存中；不连接订阅平台、不登录、不持久化、不发送提醒。所有金额均为人民币样例，不进行币种换算。设置中的货币控件禁用，仅提供 CNY。</p>
+        <p><strong>状态与动效：</strong>新增和设置保存后显示成功反馈；输入必填项或金额不合法时由浏览器校验。筛选“已取消 + 每年”可查看空状态。弹窗与抽屉的打开和关闭均为 200ms ease-out、延迟 0ms，可反复开合；点击遮罩、关闭按钮、取消或 Esc 均可返回，焦点随关闭恢复。系统开启减少动态效果时动画与过渡为 0ms。数据同步读取本地内存，没有模拟网络加载。</p>
+        <p><strong>打开方式与环境：</strong>在支持原生 <code>dialog.showModal()</code> 的现代桌面浏览器直接打开本 HTML 即可，无联网依赖。以 1440×900 为目标，最小布局宽度 1080px；窄窗口保留桌面布局并横向滚动。此文件为前端原型，不规定正式开发技术栈。</p>
+      </div>
+    </details>
+  </main>
+
+  <dialog class="modal" id="add-dialog" aria-labelledby="add-title" aria-describedby="add-description">
+    <div class="dialog-heading">
+      <div><h2 id="add-title">新增订阅</h2><p id="add-description">记录金额与续订时间，方便统一查看。</p></div>
+      <button type="button" class="button icon-button" data-close="add-dialog" aria-label="关闭新增订阅"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <form id="add-form">
+      <div class="dialog-fields">
+        <div class="field"><label for="subscription-name">订阅名称</label><input class="control" id="subscription-name" name="name" type="text" placeholder="例如：Notion Plus" maxlength="60" required autocomplete="off"><p class="field-help">最多 60 个字符。</p></div>
+        <div class="field-grid">
+          <div class="field"><label for="subscription-amount">金额</label><div class="input-with-prefix"><span class="input-prefix" aria-hidden="true">¥</span><input class="control numeric" id="subscription-amount" name="amount" type="number" min="0.01" max="999999.99" step="0.01" placeholder="0.00" required aria-label="金额，人民币"></div></div>
+          <div class="field"><label for="subscription-cycle">计费周期</label><select class="control" id="subscription-cycle" name="cycle"><option value="monthly">每月</option><option value="yearly">每年</option></select></div>
+        </div>
+        <div class="field"><label for="subscription-renewal">下次续订日期</label><input class="control numeric" id="subscription-renewal" name="renewal" type="date" required><p class="field-help">新增订阅默认为“续订中”，本次演示不会实际扣款。</p></div>
+      </div>
+      <div class="dialog-actions"><button type="button" class="button" data-close="add-dialog">取消</button><button type="submit" class="button primary">添加订阅</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="drawer" id="filter-dialog" aria-labelledby="filter-title" aria-describedby="filter-description">
+    <div class="dialog-heading">
+      <div><h2 id="filter-title">筛选订阅</h2><p id="filter-description">按状态和计费周期缩小范围。</p></div>
+      <button type="button" class="button icon-button" data-close="filter-dialog" aria-label="关闭筛选"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <form id="filter-form">
+      <div class="drawer-body">
+        <fieldset class="filter-group"><legend>订阅状态</legend>
+          <label class="radio-option"><input type="radio" name="status" value="all" checked>全部状态<span class="option-count" data-status-count="all"></span></label>
+          <label class="radio-option"><input type="radio" name="status" value="active">续订中<span class="option-count" data-status-count="active"></span></label>
+          <label class="radio-option"><input type="radio" name="status" value="paused">已暂停<span class="option-count" data-status-count="paused"></span></label>
+          <label class="radio-option"><input type="radio" name="status" value="cancelled">已取消<span class="option-count" data-status-count="cancelled"></span></label>
+        </fieldset>
+        <div class="field"><label for="filter-cycle">计费周期</label><select class="control" id="filter-cycle" name="cycle"><option value="all">全部周期</option><option value="monthly">每月</option><option value="yearly">每年</option></select></div>
+        <p class="filter-preview" id="filter-preview" aria-live="polite"></p>
+      </div>
+      <div class="dialog-actions"><button type="button" class="button" id="reset-filters">重置</button><div class="button-group"><button type="button" class="button" data-close="filter-dialog">取消</button><button type="submit" class="button primary">应用筛选</button></div></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span id="toast-copy"></span></div>
+
+  <script>
+    'use strict';
+
+    // 全部业务内容是本地演示数据。刷新后恢复此初始数组与默认设置。
+    const subscriptions = [
+      { id: 1, name: 'Figma Professional', mark: 'Fi', category: '设计与协作', amount: 105, cycle: 'monthly', renewal: '2026-11-02', anchor: '2026-11-02', status: 'active', started: '2026-08-02', note: '用于界面设计、原型制作与团队协作。' },
+      { id: 2, name: 'Notion Plus', mark: 'N', category: '知识与效率', amount: 70, cycle: 'monthly', renewal: '2026-11-05', anchor: '2026-11-05', status: 'active', started: '2026-08-05', note: '个人知识库与项目资料整理。' },
+      { id: 3, name: 'iCloud+ · 200 GB', mark: 'iC', category: '存储与备份', amount: 21, cycle: 'monthly', renewal: '2026-11-08', anchor: '2026-11-08', status: 'active', started: '2026-08-08', note: '用于照片、文件与设备备份。' },
+      { id: 4, name: 'Adobe Creative Cloud', mark: 'Ad', category: '设计与创作', amount: 198, cycle: 'monthly', renewal: '2026-11-10', anchor: '2026-11-10', status: 'active', started: '2026-08-10', note: '图像处理与视频创作工具订阅。' },
+      { id: 5, name: 'Apple Music', mark: 'AM', category: '影音娱乐', amount: 11, cycle: 'monthly', renewal: '2026-11-12', anchor: '2026-11-12', status: 'active', started: '2026-08-12', note: '个人音乐订阅。' },
+      { id: 6, name: 'GitHub Copilot', mark: 'GH', category: '开发工具', amount: 70, cycle: 'monthly', renewal: '2026-11-15', anchor: '2026-11-15', status: 'active', started: '2026-08-15', note: '日常开发中的代码辅助工具。' },
+      { id: 7, name: 'YouTube Premium', mark: 'YT', category: '影音娱乐', amount: 88, cycle: 'monthly', renewal: null, anchor: '2026-11-16', status: 'paused', started: '2026-08-16', note: '已暂停续订，暂不安排下一次扣款。' },
+      { id: 8, name: 'Dropbox Plus', mark: 'Db', category: '存储与备份', amount: 85, cycle: 'monthly', renewal: null, anchor: '2026-11-18', status: 'cancelled', started: '2026-08-18', note: '已取消续订，保留历史记录供查看。' },
+      { id: 9, name: 'Todoist Pro', mark: 'Td', category: '知识与效率', amount: 248, cycle: 'yearly', renewal: '2026-11-20', anchor: '2026-11-20', status: 'active', started: '2024-11-20', note: '年度任务管理工具订阅。' },
+      { id: 10, name: 'Readwise Reader', mark: 'R', category: '阅读与学习', amount: 69, cycle: 'monthly', renewal: '2026-11-22', anchor: '2026-11-22', status: 'active', started: '2026-08-22', note: '文章收藏、阅读与笔记整理。' },
+      { id: 11, name: '1Password', mark: '1P', category: '安全工具', amount: 248, cycle: 'yearly', renewal: '2026-11-24', anchor: '2026-11-24', status: 'active', started: '2024-11-24', note: '个人密码管理年度订阅。' },
+      { id: 12, name: 'Linear Business', mark: 'L', category: '设计与协作', amount: 112, cycle: 'monthly', renewal: null, anchor: '2026-11-26', status: 'paused', started: '2026-08-26', note: '项目暂告一段落，当前已暂停续订。' }
+    ];
+    const PAGE_SIZE = 5;
+    const defaultGeneral = { cycle: 'monthly', dateFormat: 'iso' };
+    const defaultReminders = { enabled: true, days: '3', time: '09:00' };
+    const state = {
+      view: 'list', page: 1, selectedId: null, tab: 'overview',
+      filters: { status: 'all', cycle: 'all' },
+      general: { ...defaultGeneral }, reminders: { ...defaultReminders }
+    };
+    const statusLabels = { active: '续订中', paused: '已暂停', cancelled: '已取消' };
+    const cycleLabels = { monthly: '每月', yearly: '每年' };
+    const view = document.getElementById('view');
+    const overlayOpeners = new Map();
+    const overlayTimers = new Map();
+    let toastTimer;
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+    }
+    function icon(name) { return `<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`; }
+    function money(value) { return `¥${Number(value).toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`; }
+    function formatDate(value) {
+      if (!value) return '—';
+      if (state.general.dateFormat === 'iso') return value;
+      const [year, month, day] = value.split('-').map(Number);
+      return `${year}年${month}月${day}日`;
+    }
+    function statusBadge(status) { return `<span class="status ${status}">${statusLabels[status]}</span>`; }
+    function cycleUnit(cycle) { return cycle === 'yearly' ? '年' : '月'; }
+    function matchedSubscriptions(filters = state.filters) {
+      return subscriptions.filter(item => (filters.status === 'all' || item.status === filters.status) && (filters.cycle === 'all' || item.cycle === filters.cycle));
+    }
+    function crumb(section, current) {
+      return `<div class="breadcrumb" aria-label="当前位置"><span>${section}</span><span class="separator" aria-hidden="true">/</span><span class="current">${escapeHtml(current)}</span></div>`;
+    }
+    function pageHeader(title, description, action = '') {
+      return `<header class="page-header"><div><h1 tabindex="-1">${title}</h1><p class="page-description">${description}</p></div>${action}</header>`;
+    }
+    function renderNavigation() {
+      document.querySelectorAll('[data-route]').forEach(button => {
+        const isList = button.dataset.route === 'list' && (state.view === 'list' || state.view === 'detail');
+        const isSubpage = button.classList.contains('nav-subitem') && button.dataset.route === state.view;
+        button.classList.toggle('active', isList || isSubpage);
+        if (isList || isSubpage) button.setAttribute('aria-current', state.view === 'detail' ? 'location' : 'page');
+        else button.removeAttribute('aria-current');
+      });
+      document.getElementById('settings-parent').classList.toggle('parent-active', state.view === 'general' || state.view === 'reminders');
+    }
+    function render() {
+      renderNavigation();
+      if (state.view === 'detail') renderDetail();
+      else if (state.view === 'general') renderGeneral();
+      else if (state.view === 'reminders') renderReminders();
+      else renderList();
+    }
+    function focusHeading() { view.querySelector('h1')?.focus({ preventScroll: true }); }
+
+    function renderList() {
+      const matches = matchedSubscriptions();
+      const pageCount = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+      state.page = Math.min(state.page, pageCount);
+      const start = (state.page - 1) * PAGE_SIZE;
+      const pageItems = matches.slice(start, start + PAGE_SIZE);
+      const activeCount = Number(state.filters.status !== 'all') + Number(state.filters.cycle !== 'all');
+      const filterCopy = [state.filters.status === 'all' ? '' : statusLabels[state.filters.status], state.filters.cycle === 'all' ? '' : cycleLabels[state.filters.cycle]].filter(Boolean).join(' · ');
+      const rows = pageItems.map(item => `<tr>
+        <td><button type="button" class="service-link" data-detail="${item.id}" aria-label="查看 ${escapeHtml(item.name)} 详情"><span class="service-mark" aria-hidden="true">${escapeHtml(item.mark)}</span><span class="service-name">${escapeHtml(item.name)}</span></button></td>
+        <td class="numeric">${money(item.amount)}<span class="period">/ ${cycleUnit(item.cycle)}</span></td>
+        <td class="numeric"${!item.renewal ? ' title="当前不安排续订"' : ''}>${formatDate(item.renewal)}</td>
+        <td>${statusBadge(item.status)}</td>
+        <td><button type="button" class="text-button" data-detail="${item.id}" aria-label="查看 ${escapeHtml(item.name)}">查看</button></td>
+      </tr>`).join('');
+      const empty = `<div class="empty-state">${icon('empty')}<h3>没有符合条件的订阅</h3><p>试试调整状态或计费周期。</p><button type="button" class="button" data-action="clear-filters">清除筛选</button></div>`;
+      view.innerHTML = `${crumb('我的工作区', '全部订阅')}
+        ${pageHeader('订阅管理', '查看每项订阅的费用、续订时间与当前状态。', `<button type="button" class="button primary" data-action="add">${icon('plus')}新增订阅</button>`)}
+        <section class="panel" aria-labelledby="list-title">
+          <div class="table-toolbar"><div class="table-heading"><h2 id="list-title">全部订阅</h2><span class="count">${subscriptions.length} 项</span>${activeCount ? `<span class="active-filter-copy">${filterCopy}</span>` : ''}</div><button type="button" class="button ${activeCount ? 'filter-active' : ''}" data-action="filter" aria-haspopup="dialog">${icon('filter')}筛选${activeCount ? ` · ${activeCount}` : ''}</button></div>
+          <table class="subscription-table"><caption class="visually-hidden">订阅列表，名称、金额、续订日期、状态与操作</caption><colgroup><col><col><col><col><col></colgroup><thead><tr><th scope="col">名称</th><th scope="col">金额</th><th scope="col">续订日期</th><th scope="col">状态</th><th scope="col">操作</th></tr></thead><tbody>${rows}</tbody></table>
+          ${matches.length ? '' : empty}
+          <div class="pager"><p class="pager-copy numeric">${matches.length ? `第 ${start + 1}–${Math.min(start + PAGE_SIZE, matches.length)} 项，共 ${matches.length} 项` : '共 0 项'}<span aria-hidden="true"> · </span>每页 ${PAGE_SIZE} 项</p><nav class="button-group" aria-label="订阅列表分页"><button type="button" class="button page-arrow" data-page="${state.page - 1}" ${state.page === 1 ? 'disabled' : ''}>${icon('left')}上一页</button>${Array.from({ length: pageCount }, (_, index) => `<button type="button" class="button page-number" data-page="${index + 1}" aria-label="第 ${index + 1} 页" ${state.page === index + 1 ? 'aria-current="page"' : ''}>${index + 1}</button>`).join('')}<button type="button" class="button page-arrow" data-page="${state.page + 1}" ${state.page === pageCount ? 'disabled' : ''}>下一页${icon('right')}</button></nav></div>
+        </section><p class="table-note">金额均为人民币演示样例；“—”表示当前不安排续订。</p>`;
+    }
+
+    function recordDates(item) {
+      if (item.isNew) return [];
+      const day = item.anchor.slice(-2);
+      if (item.cycle === 'yearly') return [`2025-11-${day}`, `2024-11-${day}`];
+      return [`2026-10-${day}`, `2026-09-${day}`, `2026-08-${day}`];
+    }
+    function nextCycleDate(value, cycle) {
+      const [year, month, day] = value.split('-').map(Number);
+      const date = new Date(Date.UTC(year + (cycle === 'yearly' ? 1 : 0), month - 1 + (cycle === 'monthly' ? 1 : 0), day));
+      date.setUTCDate(date.getUTCDate() - 1);
+      return date.toISOString().slice(0, 10);
+    }
+    function renderDetail() {
+      const item = subscriptions.find(entry => entry.id === state.selectedId);
+      if (!item) { state.view = 'list'; render(); return; }
+      const records = recordDates(item);
+      const overview = `<section class="panel"><div class="panel-heading"><h2>订阅概览</h2></div><dl class="detail-metrics">
+        <div class="detail-metric"><dt>订阅金额</dt><dd class="numeric">${money(item.amount)}<span class="period">/ ${cycleUnit(item.cycle)}</span></dd></div>
+        <div class="detail-metric"><dt>下次续订日期</dt><dd class="date-value numeric">${formatDate(item.renewal)}</dd></div>
+        <div class="detail-metric"><dt>当前状态</dt><dd>${statusBadge(item.status)}</dd></div>
+        </dl><dl class="detail-info"><div><dt>订阅名称</dt><dd>${escapeHtml(item.name)}</dd></div><div><dt>计费周期</dt><dd>${cycleLabels[item.cycle]}</dd></div><div><dt>用途</dt><dd>${escapeHtml(item.category)}</dd></div><div><dt>${item.isNew ? '记录日期' : '开始日期'}</dt><dd class="numeric">${formatDate(item.started)}</dd></div><div class="wide"><dt>备注</dt><dd>${escapeHtml(item.note)}</dd></div></dl></section>`;
+      const recordsContent = `<section class="panel"><div class="panel-heading"><h2>扣款记录</h2><p>以下为本地样例，不代表实际付款。</p></div>${records.length ? `<table class="records-table"><caption class="visually-hidden">${escapeHtml(item.name)} 的演示扣款记录</caption><colgroup><col><col><col><col></colgroup><thead><tr><th scope="col">扣款日期</th><th scope="col">金额</th><th scope="col">对应周期</th><th scope="col">结果</th></tr></thead><tbody>${records.map(date => `<tr><td class="numeric">${formatDate(date)}</td><td class="numeric">${money(item.amount)}</td><td class="numeric">${formatDate(date)} — ${formatDate(nextCycleDate(date, item.cycle))}</td><td><span class="status active">扣款成功</span></td></tr>`).join('')}</tbody></table><div class="records-footer">共 ${records.length} 条演示记录 · ${cycleLabels[item.cycle]}计费</div>` : `<div class="empty-state">${icon('empty')}<h3>暂无扣款记录</h3><p>新添加的演示订阅还没有扣款记录。</p></div>`}</section>`;
+      view.innerHTML = `${crumb('全部订阅', item.name)}<button type="button" class="text-button back-button" data-action="back">${icon('back')}返回全部订阅</button>
+        <header class="page-header"><div class="detail-heading"><span class="service-mark" aria-hidden="true">${escapeHtml(item.mark)}</span><div><h1 tabindex="-1">${escapeHtml(item.name)}</h1><p class="page-description">${escapeHtml(item.category)} · ${cycleLabels[item.cycle]}订阅</p></div></div></header>
+        <div class="tabs" role="tablist" aria-label="订阅详情"><button type="button" class="tab" id="tab-overview" data-tab="overview" role="tab" aria-controls="detail-panel" aria-selected="${state.tab === 'overview'}" tabindex="${state.tab === 'overview' ? 0 : -1}">概览</button><button type="button" class="tab" id="tab-records" data-tab="records" role="tab" aria-controls="detail-panel" aria-selected="${state.tab === 'records'}" tabindex="${state.tab === 'records' ? 0 : -1}">扣款记录<span class="tab-count">${records.length}</span></button></div>
+        <div id="detail-panel" role="tabpanel" aria-labelledby="tab-${state.tab}" tabindex="0">${state.tab === 'overview' ? overview : recordsContent}</div><p class="table-note">订阅信息为演示样例，未连接 ${escapeHtml(item.name)}。</p>`;
+    }
+
+    function renderGeneral() {
+      view.innerHTML = `${crumb('设置', '通用')}${pageHeader('通用设置', '调整新增订阅的默认值与日期显示方式。')}
+        <form class="settings-form" id="general-form"><section class="panel" aria-labelledby="general-panel-title"><div class="panel-heading"><h2 id="general-panel-title">显示与默认值</h2></div>
+          <div class="setting-row"><div><label class="setting-label" for="general-cycle">默认计费周期</label><p class="setting-description">用于新增订阅，可在添加时单独修改。</p></div><select class="control" id="general-cycle" name="cycle"><option value="monthly" ${state.general.cycle === 'monthly' ? 'selected' : ''}>每月</option><option value="yearly" ${state.general.cycle === 'yearly' ? 'selected' : ''}>每年</option></select></div>
+          <div class="setting-row"><div><label class="setting-label" for="general-date">日期格式</label><p class="setting-description">用于列表、详情与扣款记录中的日期。</p></div><select class="control" id="general-date" name="dateFormat"><option value="iso" ${state.general.dateFormat === 'iso' ? 'selected' : ''}>2026-11-02</option><option value="chinese" ${state.general.dateFormat === 'chinese' ? 'selected' : ''}>2026年11月2日</option></select></div>
+          <div class="setting-row"><div><label class="setting-label" for="general-currency">显示货币</label><p class="setting-description">本原型仅提供人民币样例。</p></div><select class="control" id="general-currency" disabled><option>人民币 · CNY</option></select></div>
+        </section><div class="settings-actions"><p class="settings-hint">设置仅在本次打开期间生效。</p><div class="button-group"><button type="button" class="button" data-action="reset-general">恢复默认</button><button type="submit" class="button primary">保存设置</button></div></div></form>`;
+    }
+    function renderReminders() {
+      view.innerHTML = `${crumb('设置', '提醒')}${pageHeader('提醒设置', '预览续订提醒的时间与规则；此原型不会发送通知。')}
+        <form class="settings-form" id="reminders-form"><section class="panel" aria-labelledby="reminders-panel-title"><div class="panel-heading"><h2 id="reminders-panel-title">续订提醒</h2></div>
+          <div class="setting-row"><div><label class="setting-label" for="reminder-enabled">启用续订提醒</label><p class="setting-description">只为“续订中”的订阅显示提醒样例。</p></div><label class="check-label"><input type="checkbox" id="reminder-enabled" name="enabled" ${state.reminders.enabled ? 'checked' : ''}>启用提醒</label></div>
+          <div class="setting-row"><div><label class="setting-label" for="reminder-days">提前提醒</label><p class="setting-description">选择距离续订日期的提前天数。</p></div><select class="control" id="reminder-days" name="days">${[1, 3, 7].map(day => `<option value="${day}" ${Number(state.reminders.days) === day ? 'selected' : ''}>提前 ${day} 天</option>`).join('')}</select></div>
+          <div class="setting-row"><div><label class="setting-label" for="reminder-time">提醒时间</label><p class="setting-description">按本地时间显示，下面可查看示例。</p></div><input type="time" class="control numeric" id="reminder-time" name="time" value="${state.reminders.time}" required></div>
+          <div class="reminder-preview" id="reminder-preview" aria-live="polite"></div>
+        </section><div class="settings-actions"><p class="settings-hint">设置只用于本地演示，刷新后恢复默认。</p><div class="button-group"><button type="button" class="button" data-action="reset-reminders">恢复默认</button><button type="submit" class="button primary">保存设置</button></div></div></form>`;
+      updateReminderPreview();
+    }
+    function updateReminderPreview() {
+      const form = document.getElementById('reminders-form');
+      if (!form) return;
+      const enabled = form.elements.enabled.checked;
+      form.elements.days.disabled = !enabled;
+      form.elements.time.disabled = !enabled;
+      const preview = document.getElementById('reminder-preview');
+      if (!enabled) { preview.innerHTML = '<p class="preview-label">提醒预览</p><p>续订提醒已关闭。</p>'; return; }
+      const date = new Date('2026-11-02T12:00:00Z');
+      date.setUTCDate(date.getUTCDate() - Number(form.elements.days.value));
+      preview.innerHTML = `<p class="preview-label">提醒示例</p><p class="numeric">${formatDate(date.toISOString().slice(0, 10))} ${escapeHtml(form.elements.time.value || '—')} · Figma Professional 将于 ${formatDate('2026-11-02')} 续订。</p>`;
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      document.getElementById('toast-copy').textContent = message;
+      document.getElementById('toast').hidden = false;
+      toastTimer = setTimeout(() => { document.getElementById('toast').hidden = true; }, 3600);
+    }
+    function openOverlay(id, focusSelector) {
+      const dialog = document.getElementById(id);
+      if (dialog.open) return;
+      overlayOpeners.set(id, document.activeElement);
+      dialog.classList.remove('is-closing');
+      dialog.showModal();
+      dialog.querySelector(focusSelector)?.focus({ preventScroll: true });
+    }
+    function closeOverlay(dialog, afterClose) {
+      if (!dialog.open || overlayTimers.has(dialog.id)) return;
+      dialog.classList.add('is-closing');
+      const duration = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--motion-duration'));
+      const timer = setTimeout(() => {
+        overlayTimers.delete(dialog.id);
+        dialog.close();
+        dialog.classList.remove('is-closing');
+        if (afterClose) afterClose();
+        const opener = overlayOpeners.get(dialog.id);
+        const fallback = view.querySelector(dialog.id === 'add-dialog' ? '[data-action="add"]' : '[data-action="filter"]');
+        (opener?.isConnected ? opener : fallback)?.focus({ preventScroll: true });
+      }, duration);
+      overlayTimers.set(dialog.id, timer);
+    }
+    function openAdd() {
+      const form = document.getElementById('add-form');
+      form.reset();
+      form.elements.name.setCustomValidity('');
+      form.elements.cycle.value = state.general.cycle;
+      form.elements.renewal.value = '2026-11-01';
+      openOverlay('add-dialog', '#subscription-name');
+    }
+    function readFilterDraft() {
+      const form = document.getElementById('filter-form');
+      return { status: form.elements.status.value, cycle: form.elements.cycle.value };
+    }
+    function updateFilterPreview() {
+      document.getElementById('filter-preview').innerHTML = `应用后将显示 <strong>${matchedSubscriptions(readFilterDraft()).length}</strong> 项订阅。`;
+    }
+    function openFilters() {
+      const form = document.getElementById('filter-form');
+      form.elements.status.value = state.filters.status;
+      form.elements.cycle.value = state.filters.cycle;
+      document.querySelectorAll('[data-status-count]').forEach(label => {
+        const status = label.dataset.statusCount;
+        label.textContent = status === 'all' ? subscriptions.length : subscriptions.filter(item => item.status === status).length;
+      });
+      updateFilterPreview();
+      openOverlay('filter-dialog', 'input:checked');
+    }
+
+    document.addEventListener('click', event => {
+      const route = event.target.closest('[data-route]');
+      if (route) { state.view = route.dataset.route; render(); focusHeading(); return; }
+      const detail = event.target.closest('[data-detail]');
+      if (detail) { state.selectedId = Number(detail.dataset.detail); state.view = 'detail'; state.tab = 'overview'; render(); focusHeading(); return; }
+      const tab = event.target.closest('[data-tab]');
+      if (tab) { state.tab = tab.dataset.tab; renderDetail(); document.querySelector(`[data-tab="${state.tab}"]`).focus(); return; }
+      const page = event.target.closest('[data-page]');
+      if (page && !page.disabled) { state.page = Number(page.dataset.page); renderList(); view.querySelector('.page-number[aria-current="page"]')?.focus(); return; }
+      const close = event.target.closest('[data-close]');
+      if (close) { closeOverlay(document.getElementById(close.dataset.close)); return; }
+      const action = event.target.closest('[data-action]')?.dataset.action;
+      if (action === 'add') openAdd();
+      if (action === 'filter') openFilters();
+      if (action === 'back') { state.view = 'list'; render(); focusHeading(); }
+      if (action === 'clear-filters') { state.filters = { status: 'all', cycle: 'all' }; state.page = 1; renderList(); view.querySelector('[data-action="filter"]').focus(); }
+      if (action === 'reset-general') {
+        const form = document.getElementById('general-form');
+        form.elements.cycle.value = defaultGeneral.cycle;
+        form.elements.dateFormat.value = defaultGeneral.dateFormat;
+        showToast('已恢复默认选项，保存后生效。');
+      }
+      if (action === 'reset-reminders') {
+        const form = document.getElementById('reminders-form');
+        form.elements.enabled.checked = defaultReminders.enabled;
+        form.elements.days.value = defaultReminders.days;
+        form.elements.time.value = defaultReminders.time;
+        updateReminderPreview();
+        showToast('已恢复默认选项，保存后生效。');
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (!event.target.matches('[role="tab"]')) return;
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      state.tab = event.key === 'Home' ? 'overview' : event.key === 'End' ? 'records' : state.tab === 'overview' ? 'records' : 'overview';
+      renderDetail();
+      document.querySelector(`[data-tab="${state.tab}"]`).focus();
+    });
+    document.querySelectorAll('dialog').forEach(dialog => {
+      dialog.addEventListener('cancel', event => { event.preventDefault(); closeOverlay(dialog); });
+      dialog.addEventListener('click', event => {
+        const rect = dialog.getBoundingClientRect();
+        if (event.target === dialog && (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom)) closeOverlay(dialog);
+      });
+    });
+    document.getElementById('subscription-name').addEventListener('input', event => event.target.setCustomValidity(''));
+    document.getElementById('add-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const name = form.elements.name.value.trim();
+      if (!name) { form.elements.name.setCustomValidity('请输入订阅名称，不能只包含空格。'); form.elements.name.reportValidity(); return; }
+      if (!form.reportValidity() || overlayTimers.has('add-dialog')) return;
+      const item = {
+        id: Math.max(...subscriptions.map(entry => entry.id)) + 1,
+        name, mark: Array.from(name).slice(0, 2).join(''), category: '手动添加',
+        amount: Number(form.elements.amount.value), cycle: form.elements.cycle.value,
+        renewal: form.elements.renewal.value, anchor: form.elements.renewal.value,
+        status: 'active', started: '2026-10-27', note: '当前页面中手动添加的演示样例，刷新后将恢复初始数据。', isNew: true
+      };
+      subscriptions.unshift(item);
+      closeOverlay(document.getElementById('add-dialog'), () => {
+        state.filters = { status: 'all', cycle: 'all' }; state.page = 1; state.view = 'list'; render();
+        showToast(`已添加「${name}」，已显示全部订阅。`);
+      });
+    });
+    document.getElementById('filter-form').addEventListener('change', updateFilterPreview);
+    document.getElementById('reset-filters').addEventListener('click', () => {
+      const form = document.getElementById('filter-form');
+      form.elements.status.value = 'all'; form.elements.cycle.value = 'all'; updateFilterPreview();
+    });
+    document.getElementById('filter-form').addEventListener('submit', event => {
+      event.preventDefault();
+      if (overlayTimers.has('filter-dialog')) return;
+      const draft = readFilterDraft();
+      closeOverlay(document.getElementById('filter-dialog'), () => { state.filters = draft; state.page = 1; renderList(); });
+    });
+    document.addEventListener('change', event => { if (event.target.closest('#reminders-form')) updateReminderPreview(); });
+    document.addEventListener('input', event => { if (event.target.closest('#reminders-form')) updateReminderPreview(); });
+    document.addEventListener('submit', event => {
+      if (event.target.id === 'general-form') {
+        event.preventDefault();
+        state.general = { cycle: event.target.elements.cycle.value, dateFormat: event.target.elements.dateFormat.value };
+        showToast('通用设置已保存，本次打开期间有效。');
+      }
+      if (event.target.id === 'reminders-form') {
+        event.preventDefault();
+        const form = event.target;
+        state.reminders = { enabled: form.elements.enabled.checked, days: form.elements.days.value, time: form.elements.time.value };
+        showToast('提醒设置已保存，仅用于本地演示。');
+      }
+    });
+    render();
+  </script>
+</body>
+</html>

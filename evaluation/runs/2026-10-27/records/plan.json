@@ -1,0 +1,39 @@
+{
+  "base_commit": "0983db2a7d0959bf1bf3aa9a85e1e7973539ad29",
+  "rubric": "v2",
+  "hard_gates": [
+    "Preserve user design requirements and all nine skill responsibilities",
+    "Spec and issue both state implement/want/do-not-want",
+    "Valid references and clear input-output handoffs",
+    "Focused implementation; necessary tests/build at authorized delivery or explicit stage closeout",
+    "Do not pretend static review is real harness validation"
+  ],
+  "routes": {
+    "A": "same file layout; reuse implement as common execution procedure",
+    "B": "shared execution reference; small entry skills"
+  },
+  "budget": "Two independent complete candidates; integrate; independent review and bounded repairs; final structural and scenario verification",
+  "stop": "Highest-scoring qualified candidate with no unresolved hard failures; no additional testing without a concrete remaining risk",
+  "rubric_versions": {
+    "v1": {
+      "requirements_and_methodology": 35,
+      "concision_and_reuse": 25,
+      "connectivity": 25,
+      "readability": 15
+    },
+    "v2": {
+      "practical_delivery": 35,
+      "connectivity_and_independence": 20,
+      "requirements_and_methodology": 20,
+      "lightweight_readability": 15,
+      "configuration_extensibility": 10
+    }
+  },
+  "rubric_change_reason": "User added practical end-to-end vibe-coding, issue-driven development, independence, configuration and extensibility requirements before candidate comparison.",
+  "sources": [
+    "https://agentskills.io/skill-creation/evaluating-skills",
+    "https://arxiv.org/abs/2603.15401",
+    "https://github.com/mattpocock/skills/blob/main/skills/engineering/to-tickets/SKILL.md",
+    "https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md"
+  ]
+}

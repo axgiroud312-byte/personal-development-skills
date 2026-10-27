@@ -1,0 +1,18 @@
+{
+  "evidence_type": "independent agent actual execution; final source and state available",
+  "path": "pilots/fullstack",
+  "result": "two issues implemented locally",
+  "checks_reported": [
+    "Python and JavaScript syntax",
+    "Actual local HTTP read/create and persisted JSON",
+    "Restarted process reads saved item",
+    "Invalid requests preserve data",
+    "Concurrent writes and replacement failure checks",
+    "Page JavaScript in lightweight DOM connects to actual API",
+    "Original data and user notes byte/hash unchanged"
+  ],
+  "limits": [
+    "No Chromium executable: no real browser visual or interaction validation"
+  ],
+  "no_remote_delivery": true
+}

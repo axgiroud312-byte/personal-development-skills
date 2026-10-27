@@ -1,0 +1,52 @@
+{
+  "skill_validation": [
+    {
+      "name": "design-ui",
+      "valid": true,
+      "lines": 52
+    },
+    {
+      "name": "domain-modeling",
+      "valid": true,
+      "lines": 17
+    },
+    {
+      "name": "explain-work",
+      "valid": true,
+      "lines": 16
+    },
+    {
+      "name": "grilling",
+      "valid": true,
+      "lines": 29
+    },
+    {
+      "name": "implement",
+      "valid": true,
+      "lines": 39
+    },
+    {
+      "name": "implement-spec",
+      "valid": true,
+      "lines": 39
+    },
+    {
+      "name": "setup-project-skills",
+      "valid": true,
+      "lines": 42
+    },
+    {
+      "name": "to-spec",
+      "valid": true,
+      "lines": 29
+    },
+    {
+      "name": "to-tickets",
+      "valid": true,
+      "lines": 32
+    }
+  ],
+  "structural_check": "PASS: 9 skills, metadata, and 23 local links; no behavior claim",
+  "diff_whitespace": "pass",
+  "evidence_type": "Actual structural script execution, not behavior success"
+}

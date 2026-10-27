@@ -1,0 +1,50 @@
+{
+  "files": [
+    "design-board.html",
+    "design-token.md"
+  ],
+  "required_css_and_token_checks": {
+    "--bg": {
+      "css": "#f7f7f2",
+      "expected": "#f7f7f2",
+      "listed_in_tokens": true
+    },
+    "--text": {
+      "css": "#17251f",
+      "expected": "#17251f",
+      "listed_in_tokens": true
+    },
+    "--accent": {
+      "css": "#28775b",
+      "expected": "#28775b",
+      "listed_in_tokens": true
+    },
+    "--nav-width": {
+      "css": "224px",
+      "expected": "224px",
+      "listed_in_tokens": true
+    },
+    "--row-height": {
+      "css": "44px",
+      "expected": "44px",
+      "listed_in_tokens": true
+    },
+    "--motion-duration": {
+      "css": "200ms",
+      "expected": "200ms",
+      "listed_in_tokens": true
+    }
+  },
+  "script_syntax": "pass",
+  "page_markers": {
+    "prefers-reduced-motion": true,
+    "dialog": true,
+    "drawer": true,
+    "详情": true,
+    "扣款": true,
+    "通用": true,
+    "提醒": true
+  },
+  "evidence_type": "Actual artifact creation and static/syntax inspection",
+  "limits": "Not a real-browser interaction or visual quality test"
+}
