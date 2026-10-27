@@ -1,5 +1,5 @@
 interface:
   display_name: "设计界面与交互"
-  short_description: "各类前端统一用 HTML 展示结构，细看组件、状态与动效，再提取 Token"
+  short_description: "按指定参考和组件制作成品效果预览，直接交付 HTML 与设计 Token"
 policy:
   allow_implicit_invocation: true
