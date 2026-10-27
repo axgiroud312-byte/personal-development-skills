@@ -1,5 +1,5 @@
 interface:
-  display_name: "设计界面与交互"
-  short_description: "先组织整套页面层级与布局，再呈现视觉、组件和动效，交付 HTML 与 Token"
+  display_name: "制作完整前端原型"
+  short_description: "呈现整套页面、层级、导航、视觉与动效，直接交付 HTML 和 Token"
 policy:
   allow_implicit_invocation: true
