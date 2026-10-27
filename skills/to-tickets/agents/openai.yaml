@@ -1,5 +1,6 @@
 interface:
   display_name: "拆分项目任务"
-  short_description: "明确局部设计、预期结果与依赖，不逐项铺测试，必要验证留到目标收尾"
+  short_description: "按完整可用结果拆分任务，说明本次范围、局部方案与真实依赖"
+  default_prompt: "使用 $to-tickets 将当前方案拆成可接手、依赖清楚的开发任务。"
 policy:
   allow_implicit_invocation: true

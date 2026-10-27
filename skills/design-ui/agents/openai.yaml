@@ -1,5 +1,6 @@
 interface:
-  display_name: "设计界面与交互"
-  short_description: "先组织整套页面层级与布局，再呈现视觉、组件和动效，交付 HTML 与 Token"
+  display_name: "制作完整前端原型"
+  short_description: "按指定参考呈现整套页面与交互，交付完整 HTML 原型和设计 Token"
+  default_prompt: "使用 $design-ui 按我的参考制作完整前端原型和对应设计 Token。"
 policy:
   allow_implicit_invocation: true
