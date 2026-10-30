@@ -50,7 +50,7 @@
 
 ## 设计版与设计指导
 
-`design-quality` 独立保存原有好坏设计指导，原文不改；设计、实现或评审时按需使用，不自行生成设计版或附加文档。具体制作参数需要时再读，不在多个技能里重复铺规则。
+`design-quality` 集中保存好坏设计指导，设计、实现或评审时按需使用；已有主题、组件与用户约定优先。规则只维护一份，不自行生成设计版或附加文档。
 
 用户主动调用 `design-ui` 后，需求不清先集中问通常 3–5 个关键问题，只问真实缺口；需求清楚就直接制作。一个 HTML 表达本次页面结构、导航、布局、组件样式、必要状态和动效，样例与少量交互足以判断设计即可。沿用已有参考与主题，正式业务接入留给实现；需要草图时完善同一份文件，不另养一套。
 
@@ -62,8 +62,7 @@
 | --- | --- |
 | [Spec 模板](skills/to-spec/references/spec-template.md) | 本次想实现什么、想要什么、不想要什么，以及业务、技术方案、依赖和结果 |
 | [Issue 模板](skills/to-tickets/references/issue-template.md) | 同样先说明三问，再写可接手的局部方案、依赖、预期结果和实际交接 |
-| [好坏设计参考](skills/design-quality/references/design-quality.md) | 原有指导原文保留，由独立的 `design-quality` 使用 |
-| [设计系统与组件规则](skills/design-quality/references/design-system.md) | 需要具体参数时再读；已有主题、组件与用户约定优先 |
+| [好坏设计参考](skills/design-quality/references/design-quality.md) | 布局、排版、对齐与视觉等取舍，由独立的 `design-quality` 使用 |
 
 使用时按范围裁剪或映射已有模板，不为填空发明内容。
 
