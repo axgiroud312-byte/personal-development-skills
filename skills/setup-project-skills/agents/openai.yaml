@@ -1,6 +1,6 @@
 interface:
   display_name: "配置项目约定与索引"
-  short_description: "配置技术、设计、任务和交付约定，维护真实索引与唯一项目状态"
+  short_description: "主动调用后配置项目约定，维护真实索引与唯一项目状态入口"
   default_prompt: "使用 $setup-project-skills 为当前项目整理可调整的开发约定和入口。"
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false

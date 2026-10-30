@@ -1,0 +1,4 @@
+interface:
+  display_name: "好设计与坏设计"
+  short_description: "沿用原有好坏设计指导，帮助设计、实现与评审界面，不启动设计版制作"
+  default_prompt: "使用 $design-quality 按已有好坏设计指导处理这次界面，不增加额外交付物。"
