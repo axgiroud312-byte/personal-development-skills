@@ -1,4 +1,4 @@
 interface:
-  display_name: "好设计与坏设计"
-  short_description: "沿用原有好坏设计指导，帮助设计、实现与评审界面，不启动设计版制作"
-  default_prompt: "使用 $design-quality 按已有好坏设计指导处理这次界面，不增加额外交付物。"
+  display_name: "识别常见 AI slop"
+  short_description: "识别文字堆砌、层级混乱和无意义装饰等 AI slop，只列具体坏表现"
+  default_prompt: "使用 $design-quality 结合 AI slop 清单处理这次界面，只指出具体坏表现，不增加额外交付物。"

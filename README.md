@@ -1,101 +1,74 @@
 # 中文开发技能
 
-用中文说清目标，让 Agent 按需完成方案、设计版、任务拆分与前后端实现。共十一个技能，参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills)，由用户独立维护。
+十个中文技能，用于澄清需求、编写规格、制作原型、拆分任务和完成开发。参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills)，由用户独立维护。
 
-**围绕结果和 Issue 开发，先集中实现，必要测试与构建留到交付收尾。** 小改动直接做，正式规格、任务拆分和设计版由你主动调用；技能是可选工具，不是一张必须全部走完的流程表。
+小改动直接做，复杂工作按需要使用技能。集中开发，在授权目标收尾时做必要验证与构建，不要求每次任务走完全部流程。
 
-## 怎么选
+## 技能入口
 
-| 当前需要 | 使用技能 | 触发 | 交付什么 |
-| --- | --- | --- | --- |
-| 明确的小功能或修复 | [implement](skills/implement/SKILL.md) | 按需 | 实现与按授权交付 |
-| 按目标连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 按需 | 统一安排依赖、整合、收尾与整体交付 |
-| 一组需要分工、跟踪的工作 | [to-tickets](skills/to-tickets/SKILL.md) | 仅主动调用 | 有目标、局部方案、依赖与预期结果的 Issue |
-| 需要先理清整体方案 | [to-spec](skills/to-spec/SKILL.md) | 仅主动调用 | 一份或多份适合范围的规格 |
-| 先看设计效果 | [design-ui](skills/design-ui/SKILL.md) | 仅主动调用 | 先交一个 HTML 设计版，确认后交一份 Token |
-| 判断或改善界面设计 | [design-quality](skills/design-quality/SKILL.md) | 按需 | 在当前任务中运用原有好坏设计指导 |
-| 想法或关键选择尚不清楚 | [grilling](skills/grilling/SKILL.md) | 按需 | 问题与选项、已定结论及未知项 |
-| 业务对象、关系或规则有歧义 | [domain-modeling](skills/domain-modeling/SKILL.md) | 按需 | 当前范围的统一业务定义 |
-| 需要配置项目入口 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 仅主动调用 | 简短项目索引与唯一状态入口 |
-| 要做多轮分析与优化 | [task-loop](skills/task-loop/SKILL.md) | 仅主动调用 | 经试验、验收与路线比较选出的成果 |
-| 做完后需要听懂结果 | [explain-work](skills/explain-work/SKILL.md) | 按需 | 结果、原因、关键流程与证据范围 |
+| 当前需要 | 技能 | 调用方式与交付 |
+| --- | --- | --- |
+| 完成明确功能或修复 | [implement](skills/implement/SKILL.md) | 按需实施，交付实际成果与验证范围 |
+| 连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 按需协调依赖、分工、整合与收尾 |
+| 写需求规格 | [to-spec](skills/to-spec/SKILL.md) | 主动调用，交付一份或多份 Spec |
+| 拆分开发任务 | [to-tickets](skills/to-tickets/SKILL.md) | 主动调用，交付远程或本地 Issue |
+| 先看设计效果 | [design-ui](skills/design-ui/SKILL.md) | 主动调用，先交 HTML 原型，满意后提取 Token |
+| 识别常见 AI 味界面 | [design-quality](skills/design-quality/SKILL.md) | 按需读取 AI slop 清单，不额外生成文件 |
+| 理清需求与关键选择 | [grilling](skills/grilling/SKILL.md) | 按需提问，在聊天交付结论 |
+| 澄清业务含义 | [domain-modeling](skills/domain-modeling/SKILL.md) | 按需在对话中解释，不生成术语或领域文档 |
+| 配置项目工作约定 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 主动调用，更新根目录 `AGENTS.md` |
+| 听懂刚才的工作 | [explain-work](skills/explain-work/SKILL.md) | 按需在聊天解释结果、原因与验证范围 |
 
-日常可以只用 `implement`，连续多任务交给 `implement-spec`。**五个手动入口只由用户主动调用**；任务涉及 UI、范围较大、遇到错误或缺少文档，都不自动启动它们。引用已有结论、维护已有资料和安排内部步骤照常进行，不能用“等价方法”绕过边界另造专项产物。
+四个手动入口只由用户主动调用；一次调用后的补充、修改和确认可继续处理，无需反复点名。开发涉及 UI、范围较大或缺少文件，都不自动启动这些专项流程。其他技能可以读取已有材料、维护受影响内容和安排内部步骤，不能借用等价方法绕过调用边界另造专项产物。
 
-主动调用可使用客户端入口，例如 Codex 的 `$design-ui`、Claude Code 的 `/design-ui`、Pi 的 `/skill:design-ui`；其他手动技能替换名称即可。元数据同时配置 Claude Code/Pi 的 `disable-model-invocation: true` 和 Codex 的 `policy.allow_implicit_invocation: false`；不支持这些开关的客户端仍需遵守正文边界，不能承诺宿主强制拦截。一次已授权任务的补充、修改和确认可连续处理，无需反复点名；主动调用一个技能不自动授权另一个手动入口。
+手动入口保留 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`。不支持这些开关的客户端仍需遵守正文约定，不能把元数据当作宿主已强制执行的证明。
 
-## 从想法到可用功能
+## 项目只按需保留这些资料
 
-- **小改动：** 直接实施，已有依据足够就复用，不补 PRD、Spec、Issue 全套文件。
-- **一项完整能力：** 复用已有需求与设计即可实施；用户主动调用时再单独写 Spec、制作设计版或拆 Issue。
-- **较大项目：** 以 PRD/已有计划为整体依据，近期细化、远期保留范围与依赖，持续完成已授权目标；内部安排不要求先生成正式 Spec 或 Issue。
-
-这些工作可以往返调整。业务含义在技术模块设计前核对，设计影响接口时回写方案；Spec 和任务划分不等于页面划分。Issue 优先承接一条用户可见流程，让前端、接口和数据协作形成可用结果；原型、模拟和真实接入分别记录；共用基础设施按真实依赖安排，不机械拆成互不衔接的前后端清单。
-
-原始需求和 Issue 足以实施就不强求 Spec；已有 Spec 时，Issue 引用具体章节，只补本任务边界、局部差异和交接，不再复制整套契约与完成标准。只为需要独立交接的成果拆任务，普通选型、查证和配置留在方案或实现任务内。
-
-## 几条共同原则
-
-代码和实际行为用于判断现状，已确认的新需求决定目标；文档不一致时沿用现有惯例并说明差异，不能因新功能尚未实现就忽略它。
-
-每项决定只保留一份正文：业务含义归领域记录，整体方案与共同接口归 Spec，页面与视觉归原型和 Token，实际数值与组件实现归源码，单项要求与结果归 Issue。现有文件能承接就原位更新，其他位置引用；不要求每类都有独立文件。
-
-事实由 Agent 调查，既定约束内的可逆选型自行决定并说明依据；补齐缺失模块不等于替换现有技术栈。只有真正改变目标、业务规则、用户权利或授权范围的选择才提问。`grilling` 每题只给问题和两个或更多选项，不附建议或解释。
-
-## 集中开发与收尾
-
-不默认采用 TDD。完整执行方法集中在 [implement](skills/implement/SKILL.md)，`implement-spec` 读取并复用，只增加跨任务的协调职责。测试、验证与构建按最终改动和交付需要，在授权目标或用户明确要求单独交付的阶段收尾处理；Issue、提交、内部批次不自动成为验证节点。已有测试与强制 CI 保留，当前阻碍的最小复现、预览启动与不可逆操作前的保护按需进行。
-
-独立任务由执行者收尾；连续开发由主 Agent 合并安排，子任务先回交实现和待收尾事项。交付区分本地、提交推送和 PR，沿用授权；未验证不能写成通过，PR 请求不自动授权合并。成果保存、临时工作树和其他修改的保护也按 `implement` 执行。
-
-## 设计版与设计指导
-
-`design-quality` 集中保存好坏设计指导，设计、实现或评审时按需使用；已有主题、组件与用户约定优先。规则只维护一份，不自行生成设计版或附加文档。
-
-用户主动调用 `design-ui` 后，需求不清先集中问通常 3–5 个关键问题，只问真实缺口；需求清楚就直接制作。一个 HTML 表达本次页面结构、导航、布局、组件样式、必要状态和动效，样例与少量交互足以判断设计即可。沿用已有参考与主题，正式业务接入留给实现；需要草图时完善同一份文件，不另养一套。
-
-先交付 `docs/design/design-board.html` 供用户确认；确认当前版本后，再从实际样式整理一份 `docs/design/design-token.md`。样式变量正常用于制作，Token 文档只在确认后生成或同步，记录共用变量和实际引用，不抄写所有页面尺寸。仅要草图不追加 Token，不另交设计规范、组件清单、评分或质量报告。现有项目位置优先。
-
-## 模板与设计参考
-
-| 文件 | 用途 |
+| 位置 | 内容边界 |
 | --- | --- |
-| [Spec 模板](skills/to-spec/references/spec-template.md) | 本次想实现什么、想要什么、不想要什么，以及业务、技术方案、依赖和结果 |
-| [Issue 模板](skills/to-tickets/references/issue-template.md) | 同样先说明三问，再写可接手的局部方案、依赖、预期结果和实际交接 |
-| [好坏设计参考](skills/design-quality/references/design-quality.md) | 布局、排版、对齐与视觉等取舍，由独立的 `design-quality` 使用 |
+| 根目录 `AGENTS.md` | AI 工作指令、技术与开发约定、真实命令和必要索引 |
+| `docs/specs/<主题>.md` | 本规格的目标、范围、行为、技术方案、依赖、完成标准和未决选择 |
+| 远程 Issue，或 `docs/issues/<标识>.md` | 本任务的要求、局部方案、依赖、结果和进展；正文只维护一处 |
+| `docs/design/design-board.html` | 本次范围的页面、交互与视觉原型，组件和来源说明放在文件内 |
+| `docs/design/design-token.md` | 从用户已确认原型提取的实际共用 Token |
 
-使用时按范围裁剪或映射已有模板，不为填空发明内容。
+这些是允许的产物，不是必备清单。已有同类文件沿用其位置；新项目采用上表默认位置。项目指令统一在 `AGENTS.md`，已有其他客户端入口只作必要引用，不复制规则。
 
-## 项目配置
+不另生成术语表、领域文档、讨论记录、状态文件、计划总览、开发指南或总结报告，也不将它们塞进 Spec 或 Issue。业务歧义在对话中解决；规格只描述本功能实际需要的行为与约束，任务只描述本任务需要的内容。实际进展更新对应 Issue，没有 Issue 就在聊天交接。
 
-`setup-project-skills` 在项目的 `AGENTS.md` 或 `CLAUDE.md` 维护一份简短索引，指向真实文件和查到的命令，不复制正文与进度。当前任务要求优先，项目已确认约定覆盖个人全局偏好和技能默认；未确定部分再沿用偏好。前后端技术栈、设计组件、任务平台、交付方式和已有收尾命令都能在这一处调整；专业技能按需链接，临时选择不自动变成长期默认。
+远程任务功能可用时，直接维护远程 Issue。已配置但暂时无法访问时，在聊天给出待发布草稿和阻碍，不静默建立本地副本。仅配置 Git 远端不等于任务功能已经可用。
 
-状态沿用现有入口；无约定时，有 GitHub 用固定“项目当前状态”Issue，没有则用 `STATUS.md`。README 与索引指向同处，由主 Agent 在接手、关键变化与暂停/结束时更新，区分设计、实现、待验证、分支可用、主线可用与用户验收；不承诺后台自动刷新。
+本仓库自身保留必要的 `SKILL.md`、显示配置、Spec/Issue 模板、AI slop 参考和结构检查脚本；不另外维护历史评测报告。
+
+## 设计与开发衔接
+
+[AI slop 参考](skills/design-quality/references/design-quality.md) 只按编号描述具体坏表现，重点包括文字堆砌、自我状态和第一人称文案、无关 AI 组件、对齐与功能层级混乱，以及无意义的渐变、外框、描边、阴影和光效。不提供好设计示范或固定替代套路。
+
+调用 `design-ui` 后，先制作可打开的 HTML 原型，按反馈修改同一份文件；用户满意后，再从该版实际样式提取一份 Token 文档。仅要草图就只交草图。正式开发参考原型与 Token，不要求共用原型源码，原型完成也不等于正式前端完成。
+
+[Spec 模板](skills/to-spec/references/spec-template.md) 只承接规格，[Issue 模板](skills/to-tickets/references/issue-template.md) 只承接任务。已有 Spec 时，Issue 引用相应章节并补局部差异；没有 Spec 也能完成明确任务，不为开工补齐全套文件。
+
+执行方法集中在 `implement`，`implement-spec` 复用并负责跨任务整合。验证与构建按最终改动和交付需要选择；不默认采用 TDD，不为每个 Issue 增设检查阶段，已有强制 CI 保留。交付区分代码已改、实际运行、真实验证与用户验收。
 
 ## 安装与更新
 
-需要 Node.js 22.20 或更新的受支持版本（含 npm/npx）、Git，以及 npm 和 GitHub 访问能力。通过 [Skills CLI](https://github.com/vercel-labs/skills) 安装，例如为 Codex 全局安装全部技能：
+需要可用的 Node.js/npm、Git 及 npm、GitHub 访问能力。通过 [Skills CLI](https://github.com/vercel-labs/skills) 为 Codex 全局安装：
 
 ```sh
 npx skills@latest add axgiroud312-byte/personal-development-skills --skill '*' --agent codex -g
 ```
 
-`-g` 表示所有项目可用，去掉则装到当前项目；重新运行相同命令可更新原范围。安装副本有自己修改的内容时先保存。交互选择可省略 `--skill` 与 `--agent`，只查看目录可加 `--list`；其他 Agent 名称见 [支持列表](https://github.com/vercel-labs/skills/blob/main/docs/agents.md)。
+重新运行可更新同一安装范围；去掉 `-g` 则安装到当前项目。先检查安装副本中是否有自定义修改，整合后再更新，不覆盖未处理的改动。其他客户端按实际支持的 Agent 名称调整参数。
 
-除 `implement-spec` 外，各入口都能独立使用，辅助指导缺失不阻塞明确工作，但不能借此自动执行手动技能的专项流程。**`implement-spec` 必须与同源同版本的 `implement` 一起安装**；它读取后者复用执行方法。按 Issue 开发的最小组合可用：
+`implement-spec` 必须与同源同版本的 `implement` 一起安装：
 
 ```sh
-npx skills@latest add axgiroud312-byte/personal-development-skills --skill to-tickets implement implement-spec --agent codex -g
+npx skills@latest add axgiroud312-byte/personal-development-skills --skill implement implement-spec --agent codex -g
 ```
 
-已安装但缺少依赖时，运行这条命令统一更新相应技能。安装源应保留每个技能内的 `references/`、`agents/` 及兄弟目录相对关系，不能只复制 `SKILL.md`。
+保留各技能内部的 `references/`、`agents/` 和兄弟目录关系，不能只复制主文件。其余入口可独立使用；缺少辅助技能时沿用现有依据，不因此启动手动专项流程。安装更新后核对实际入口，移除不再使用的旧入口。
 
-旧版 `grill-with-docs` 已合并进 `grilling`，升级不会自动删除旧入口；确认安装范围后，可用 `npx skills@latest remove grill-with-docs --agent codex -g` 移除。新安装无需处理，项目级或其它 Agent 相应调整参数；不要误删仍被其它 Agent 使用的副本。
+## 仓库维护
 
-## 维护与评估
-
-主文件保留职责、流程和读取时机，模板与设计参考单独维护。中文说明以能读懂、能执行为准，以 120 行以内为目标，效果优先；改动同步显示信息和引用，不靠超长行压缩。
-
-`task-loop` 来自用户原有 v2 方法，仅收紧主动调用边界，保留试验改进、固定验收和路线交流。主动调用后才运行专项循环，按证据与预算停止，不为凑次数重复；结构检查不能证明模型行为。
-
-本次 [手动触发与设计拆分记录](evaluation/manual-design-2026-10-30.md) 保留实际试跑、修改与验证限制。已有 [迭代评估](evaluation/toloop-2026-10-27.md)、[四轮记录](EVALUATION.md) 和 [十轮记录](evaluation/ten-rounds-2026-10-26.md) 保留为历史，不构成日常任务的默认流程。技能源的维护约定见 [AGENTS.md](AGENTS.md)。
+按 [AGENTS.md](AGENTS.md) 更新技能、显示信息与引用。运行 `python -X utf8 -B scripts/verify_skill_links.py` 检查结构、调用元数据与本地链接；该检查不证明模型行为或实际设计质量，不额外产出报告。

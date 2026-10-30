@@ -7,9 +7,9 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
     "design-quality", "design-ui", "domain-modeling", "explain-work", "grilling",
-    "implement", "implement-spec", "setup-project-skills", "task-loop", "to-spec", "to-tickets",
+    "implement", "implement-spec", "setup-project-skills", "to-spec", "to-tickets",
 }
-MANUAL = {"design-ui", "setup-project-skills", "task-loop", "to-spec", "to-tickets"}
+MANUAL = {"design-ui", "setup-project-skills", "to-spec", "to-tickets"}
 
 
 def headings(source):
@@ -25,7 +25,11 @@ def headings(source):
 
 def run():
     skills = ROOT / "skills"
-    found = {p.name for p in skills.iterdir() if p.is_dir()}
+    directories = {p.name: p for p in skills.iterdir() if p.is_dir()}
+    found = {name for name, path in directories.items() if any(p.is_file() for p in path.rglob("*"))}
+    empty = sorted(directories.keys() - found)
+    if empty:
+        print(f"WARN: empty skill directories remain (not loadable): {', '.join(empty)}")
     assert found == EXPECTED, f"Unexpected skill set: {found ^ EXPECTED}"
     for name in sorted(EXPECTED):
         path = skills / name / "SKILL.md"
@@ -53,7 +57,7 @@ def run():
 
     count = 0
     for path in sorted(ROOT.rglob("*.md")):
-        if ".git" in path.parts:
+        if any(part in {".git", ".maintenance"} for part in path.parts):
             continue
         source = path.read_text(encoding="utf-8")
         # Code examples may contain placeholder links; only check prose links.

@@ -1,6 +1,0 @@
-interface:
-  display_name: "多循环分析与优化"
-  short_description: "仅主动调用时用试验、固定验收与多路线比较优化结果，保留原有方法"
-  default_prompt: "使用 $task-loop 按现有验收规则多轮优化这项任务，交付证据最充分的结果。"
-policy:
-  allow_implicit_invocation: false
