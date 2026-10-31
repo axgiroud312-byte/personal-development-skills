@@ -6,7 +6,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "design-quality", "design-ui", "domain-modeling", "explain-work", "grilling",
+    "design-quality", "design-ui", "explain-work", "grilling",
     "implement", "implement-spec", "setup-project-skills", "to-spec", "to-tickets",
 }
 MANUAL = {"design-ui", "setup-project-skills", "to-spec", "to-tickets"}

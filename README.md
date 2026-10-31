@@ -1,6 +1,6 @@
 # 中文开发技能
 
-十个中文技能，用于澄清需求、编写规格、制作原型、拆分任务和完成开发。参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills)，由用户独立维护。
+九个中文技能，用于澄清需求、编写规格、制作原型、拆分任务和完成开发。参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills)，由用户独立维护。
 
 小改动直接做，复杂工作按需要使用技能。集中开发，在授权目标收尾时做必要验证与构建，不要求每次任务走完全部流程。
 
@@ -15,8 +15,7 @@
 | 先看设计效果 | [design-ui](skills/design-ui/SKILL.md) | 主动调用，先交 HTML 原型，满意后提取 Token |
 | 识别常见 AI 味界面 | [design-quality](skills/design-quality/SKILL.md) | 按需读取 AI slop 清单，不额外生成文件 |
 | 理清需求与关键选择 | [grilling](skills/grilling/SKILL.md) | 按需提问，在聊天交付结论 |
-| 澄清业务含义 | [domain-modeling](skills/domain-modeling/SKILL.md) | 按需在对话中解释，不生成术语或领域文档 |
-| 配置项目工作约定 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 主动调用，更新根目录 `AGENTS.md` |
+| 写入技能流程与文档位置 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 主动调用，只更新项目 `AGENTS.md` 中对应内容 |
 | 听懂刚才的工作 | [explain-work](skills/explain-work/SKILL.md) | 按需在聊天解释结果、原因与验证范围 |
 
 四个手动入口只由用户主动调用；一次调用后的补充、修改和确认可继续处理，无需反复点名。开发涉及 UI、范围较大或缺少文件，都不自动启动这些专项流程。其他技能可以读取已有材料、维护受影响内容和安排内部步骤，不能借用等价方法绕过调用边界另造专项产物。
@@ -27,13 +26,15 @@
 
 | 位置 | 内容边界 |
 | --- | --- |
-| 根目录 `AGENTS.md` | AI 工作指令、技术与开发约定、真实命令和必要索引 |
+| 根目录 `AGENTS.md` | 保留已有项目指令；本套技能只补充使用流程、文档位置和工作准则 |
 | `docs/specs/<主题>.md` | 本规格的目标、范围、行为、技术方案、依赖、完成标准和未决选择 |
 | 远程 Issue，或 `docs/issues/<标识>.md` | 本任务的要求、局部方案、依赖、结果和进展；正文只维护一处 |
 | `docs/design/design-board.html` | 本次范围的页面、交互与视觉原型，组件和来源说明放在文件内 |
 | `docs/design/design-token.md` | 从用户已确认原型提取的实际共用 Token |
 
 这些是允许的产物，不是必备清单。已有同类文件沿用其位置；新项目采用上表默认位置。项目指令统一在 `AGENTS.md`，已有其他客户端入口只作必要引用，不复制规则。
+
+`setup-project-skills` 只把技能如何衔接、所需文档在哪里写进 `AGENTS.md`，不承担技术栈、启动命令、CI 或交付方式配置，也不修改其他客户端入口。写入时保留两条准则：第一性原理大于一切，遇到问题首先从根源上解决；遇到文档与代码不一致时，沿用现有实现的惯例，并在完成后列出发现的差异。
 
 不另生成术语表、领域文档、讨论记录、状态文件、计划总览、开发指南或总结报告，也不将它们塞进 Spec 或 Issue。业务歧义在对话中解决；规格只描述本功能实际需要的行为与约束，任务只描述本任务需要的内容。实际进展更新对应 Issue，没有 Issue 就在聊天交接。
 

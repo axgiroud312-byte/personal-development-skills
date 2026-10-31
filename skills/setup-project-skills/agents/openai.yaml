@@ -1,6 +1,6 @@
 interface:
-  display_name: "配置项目约定与索引"
-  short_description: "主动调用后将工作指令、开发约定和真实索引集中到项目 AGENTS.md"
-  default_prompt: "使用 $setup-project-skills 为当前项目整理可调整的开发约定和入口。"
+  display_name: "写入技能流程与文档位置"
+  short_description: "主动调用后只在项目 AGENTS.md 写明技能流程、文档位置与工作准则"
+  default_prompt: "使用 $setup-project-skills，在项目 AGENTS.md 中写明这套技能的使用流程、所需文档位置和工作准则。"
 policy:
   allow_implicit_invocation: false

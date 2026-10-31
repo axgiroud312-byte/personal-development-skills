@@ -1,6 +1,0 @@
-interface:
-  display_name: "理清业务概念"
-  short_description: "在对话中澄清当前业务含义与行为歧义，不生成术语表或领域文档"
-  default_prompt: "使用 $domain-modeling 理清本次需求中的业务对象、关系与规则。"
-policy:
-  allow_implicit_invocation: true
