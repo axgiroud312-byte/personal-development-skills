@@ -1,6 +1,6 @@
 interface:
   display_name: "连续完成整套开发"
-  short_description: "按真实依赖推进多个任务，统一整合和收尾，持续完成已授权目标"
-  default_prompt: "使用 $implement-spec 按现有方案和任务连续完成本次开发目标。"
+  short_description: "按真实依赖协调多个任务，共享重要方案调整，集中开发并统一必要验证"
+  default_prompt: "使用 $implement-spec，结合已有方案和实际情况连续完成这些任务，统一重要调整、整合与必要验证。"
 policy:
   allow_implicit_invocation: true
