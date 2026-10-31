@@ -1,6 +1,6 @@
 interface:
   display_name: "把需求聊清楚"
-  short_description: "用简短问题和中性选项讨论关键选择，在聊天中整理目标、范围和已定结论"
-  default_prompt: "使用 $grilling 帮我理清这个需求，每次讨论一个关键问题。"
+  short_description: "用具体场景理清需求，说清关键选项的效果和代价，在聊天中整理结论"
+  default_prompt: "使用 $grilling 帮我理清需求，每次讨论一个关键问题，让我看懂不同选择的效果和代价。"
 policy:
   allow_implicit_invocation: true

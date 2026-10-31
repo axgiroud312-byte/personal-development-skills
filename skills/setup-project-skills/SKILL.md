@@ -12,9 +12,9 @@ disable-model-invocation: true
 
 ## 说明技能怎么衔接
 
-- 想法需要讨论时用 `grilling`，在聊天中明确目标和关键选择。
-- 用户调用 `to-spec` 写整体规格，调用 `to-tickets` 拆具体任务；需要看设计时调用 `design-ui`，先交原型，满意后提取 Token。
-- 单项开发用 `implement`。多个 Issue 用 `implement-spec`：先理清本次目标，再安排依赖、分工和整合；执行复用 `implement`，集中开发、少测试，最后统一收尾。
+- 想法需要讨论时用 `grilling`，用具体场景理清需求，说清关键选择的效果与代价。
+- 用户调用 `to-spec` 写整体规格，调用 `to-tickets` 拆具体任务；看设计时调用 `design-ui`，先用交互 HTML 看应用布局、信息和页面层级，再按反馈完善，随时可停止并保留进度；完整原型确认满意后提取 Token。
+- 单项开发用 `implement`。多个 Issue 用 `implement-spec`：理清目标，提前用样例判断难以想象、返工较大的成果，再协调依赖、分工和整合；执行复用 `implement`，集中开发、少测试，最后统一收尾。
 - 设计和界面开发参考 `design-quality`；需要听懂工作结果时用 `explain-work`。
 
 按实际需要组合技能，简单任务可以直接实施。四个手动入口由用户启动，任务里的补充、修改和确认连续处理。

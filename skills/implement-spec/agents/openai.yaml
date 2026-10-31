@@ -1,6 +1,6 @@
 interface:
-  display_name: "协调并完成多个 Issue"
-  short_description: "先理清本次目标，安排多个 Issue 的依赖与分工，整合成果并统一收尾"
-  default_prompt: "使用 $implement-spec，先理清我这次要做什么、完成什么目标，再安排多个 Issue 的依赖、分工和整合，执行复用 implement，最后统一收尾。"
+  display_name: "理清目标并协调多个 Issue"
+  short_description: "理清目标，用样例看懂关键成果与取舍，再协调多个 Issue，集中开发并统一收尾"
+  default_prompt: "使用 $implement-spec 理清本次目标，帮助我提前判断关键成果和取舍，再协调多个 Issue；复用 implement 集中开发、少测试，最后统一收尾。"
 policy:
   allow_implicit_invocation: true
