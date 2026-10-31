@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 把想法说清楚 | [grilling](skills/grilling/SKILL.md) | 在聊天中明确目标和关键选择 |
 | 写清需求与方案理由 | [to-spec](skills/to-spec/SKILL.md) | 想实现什么、为什么这样做、想要与不想要什么 |
-| 把方案拆成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 有具体做法、依赖和结果的 Issue |
+| 把方案拆成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 做什么、怎么做、依赖什么和预期结果 |
 | 完成功能或修复 | [implement](skills/implement/SKILL.md) | 可使用的成果和实际检查结果 |
 | 连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 统一安排、整合和交付的成果 |
 | 先看界面效果 | [design-ui](skills/design-ui/SKILL.md) | HTML 原型，满意后提取 Token |
@@ -28,7 +28,7 @@
 | --- | --- | --- |
 | 项目入口 | `AGENTS.md` | 这套技能的流程、文档位置和工作准则，保留项目已有指令 |
 | Spec | `docs/specs/<主题>.md` | 需求、方案理由，以及逐条的想要与不想要 |
-| Issue | 远程 Issue；未配置任务平台时用 `docs/issues/<标识>.md` | 具体任务、方案和进展 |
+| Issue | 远程 Issue；未配置任务平台时用 `docs/issues/<标识>.md` | 四部分任务正文，进展随任务更新 |
 | 原型 | `docs/design/design-board.html` | 页面、交互、组件和来源说明 |
 | Design Token | `docs/design/design-token.md` | 已确认原型实际使用的共用样式值 |
 

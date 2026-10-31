@@ -1,6 +1,6 @@
 interface:
   display_name: "拆成可执行任务"
-  short_description: "把需求或规格拆成能接手的任务，写清具体做法、依赖、结果与实际进展"
-  default_prompt: "使用 $to-tickets 把当前需求或 Spec 拆成可接手的任务，写清具体做法和预期结果。"
+  short_description: "把需求或规格拆成任务，写清做什么、具体怎么做、依赖什么和预期结果"
+  default_prompt: "使用 $to-tickets 拆分当前需求或 Spec，按四部分写清每项任务：这项任务做什么、具体怎么做、依赖什么、预期结果。"
 policy:
   allow_implicit_invocation: false
