@@ -1,6 +1,6 @@
 interface:
-  display_name: "拆分项目任务"
-  short_description: "主动调用后拆分可交付任务，写清具体方案与依赖，区分要求和工程选择"
-  default_prompt: "使用 $to-tickets 将当前需求或 Spec 拆成可接手的任务，写清具体方案、真实依赖与预期结果，避免重复正文和逐票测试流程。"
+  display_name: "拆成可执行任务"
+  short_description: "把需求或规格拆成能接手的任务，写清具体做法、依赖、结果与实际进展"
+  default_prompt: "使用 $to-tickets 把当前需求或 Spec 拆成可接手的任务，写清具体做法和预期结果。"
 policy:
   allow_implicit_invocation: false

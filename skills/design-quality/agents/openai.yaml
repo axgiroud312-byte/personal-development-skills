@@ -1,4 +1,4 @@
 interface:
-  display_name: "识别常见 AI slop"
-  short_description: "识别文字堆砌、层级混乱和无意义装饰等 AI slop，只列具体坏表现"
-  default_prompt: "使用 $design-quality 结合 AI slop 清单处理这次界面，只指出具体坏表现，不增加额外交付物。"
+  display_name: "判断常见 AI slop"
+  short_description: "结合实际页面和用户参考判断 AI slop，说明具体问题及其对使用的影响"
+  default_prompt: "使用 $design-quality 结合实际界面和 AI slop 清单，指出具体问题及其影响。"

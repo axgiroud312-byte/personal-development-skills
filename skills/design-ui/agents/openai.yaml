@@ -1,6 +1,6 @@
 interface:
-  display_name: "生成设计版与 Token"
-  short_description: "仅主动调用时制作设计版，先问必要问题，用户确认后再输出一份设计 Token"
-  default_prompt: "使用 $design-ui 生成设计版：需求不清先问关键问题，清楚就直接制作，等我确认后再整理 Token。"
+  display_name: "先看原型，再提取 Token"
+  short_description: "先交可打开的 HTML 原型，按反馈修改，用户满意后提取实际设计 Token"
+  default_prompt: "使用 $design-ui 制作可查看的 HTML 原型，根据我的反馈修改，满意后提取 Token 文档。"
 policy:
   allow_implicit_invocation: false

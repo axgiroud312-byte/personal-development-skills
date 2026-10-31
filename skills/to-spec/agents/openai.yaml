@@ -1,6 +1,6 @@
 interface:
-  display_name: "整理开发规格"
-  short_description: "主动调用后写清整体开发方案、明确约束与完成标准，标明重要假设"
-  default_prompt: "使用 $to-spec 整理本次开发规格，写清目标与整体方案，区分明确要求、当前工程选择和重要假设。"
+  display_name: "写清整体开发规格"
+  short_description: "将需求写成清楚的整体开发规格，明确范围、方案、共同要求和完成结果"
+  default_prompt: "使用 $to-spec 将这个需求整理成开发规格，写清目标、范围、整体方案和完成标准。"
 policy:
   allow_implicit_invocation: false

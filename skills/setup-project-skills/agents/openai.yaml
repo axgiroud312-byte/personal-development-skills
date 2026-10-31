@@ -1,6 +1,6 @@
 interface:
   display_name: "写入技能流程与文档位置"
-  short_description: "主动调用后只在项目 AGENTS.md 写明技能流程、文档位置与工作准则"
-  default_prompt: "使用 $setup-project-skills，在项目 AGENTS.md 中写明这套技能的使用流程、所需文档位置和工作准则。"
+  short_description: "在项目 AGENTS.md 写明技能怎样衔接、各类文档位置和简短工作准则"
+  default_prompt: "使用 $setup-project-skills，在项目 AGENTS.md 写明这套技能怎么使用、文档在哪里以及工作准则。"
 policy:
   allow_implicit_invocation: false

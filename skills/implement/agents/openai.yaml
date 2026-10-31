@@ -1,6 +1,6 @@
 interface:
   display_name: "集中完成开发"
-  short_description: "结合任务与实际情况自主实施，集中开发、少做重复测试并按目标交付"
-  default_prompt: "使用 $implement，结合 Issue 和实际情况自主完成本次目标，集中开发、少做重复测试，并说明重要调整与真实结果。"
+  short_description: "按任务和实际代码自主推进，集中开发，收尾统一检查并交付可用结果"
+  default_prompt: "使用 $implement 完成这项任务，集中开发，收尾说明实际成果和检查结果。"
 policy:
   allow_implicit_invocation: true
