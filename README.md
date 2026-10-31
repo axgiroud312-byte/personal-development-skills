@@ -2,7 +2,7 @@
 
 这套技能帮助你把想法变成可用功能。核心流程是：**Spec 写需求与方案理由，Issue 写具体任务，implement 集中完成开发。** 简单修改可以直接实施。
 
-你决定目标和重要取舍，Agent 根据已有方案和实际代码处理工程细节。完成一组相关工作后，统一做必要检查并交付。
+你决定目标和重要取舍，Agent 按 Issue 和实际代码自主执行。集中开发、少测试，完成一组相关工作后统一收尾。
 
 ## 什么时候用哪个技能
 
@@ -11,8 +11,8 @@
 | 把想法说清楚 | [grilling](skills/grilling/SKILL.md) | 在聊天中明确目标和关键选择 |
 | 写清需求与方案理由 | [to-spec](skills/to-spec/SKILL.md) | 想实现什么、为什么这样做、想要与不想要什么 |
 | 把方案拆成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 做什么、怎么做、依赖什么和预期结果 |
-| 完成功能或修复 | [implement](skills/implement/SKILL.md) | 可使用的成果和实际检查结果 |
-| 连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 统一安排、整合和交付的成果 |
+| 完成功能或修复 | [implement](skills/implement/SKILL.md) | 按 Issue 自主实施，集中开发、必要检查与交付 |
+| 连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 协调依赖和分工，统一整合与收尾 |
 | 先看界面效果 | [design-ui](skills/design-ui/SKILL.md) | HTML 原型，满意后提取 Token |
 | 找出界面中的 AI 味问题 | [design-quality](skills/design-quality/SKILL.md) | 结合实际页面判断 AI slop |
 | 让项目知道这套流程 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 写入 `AGENTS.md` 的流程和文档位置 |
@@ -44,7 +44,7 @@
 
 遇到文档过时或实现矛盾时，先查清原因，沿用合适的现有做法，修正已证实的错误。重要调整写回对应 Spec 或 Issue，完成后说明差异。
 
-集中完成相关开发，目标收尾统一必要检查。中途遇到实际错误，或一个关键疑问会影响大量后续工作，先做足以判断的小检查。检查通过后继续交付；新改动和新问题按影响复查。测试优先复用项目现有安排，新增测试用来确认具体行为或防止已知问题再次出现。
+`implement` 分为读清任务、自主执行、集中开发少测试、统一收尾。关联任务集中完成，检查优先复用项目已有安排；中途的实际错误或关键疑问小范围处理，最终按 Issue 的预期结果统一检查和交付。子任务回交成果及已有检查，由整体负责人收尾。
 
 结果按实际情况说明：代码已改、真实运行、模拟检查、等待验证、用户验收。有对应 Issue 时，将进展和结果写回该 Issue；其他任务在聊天中交接。
 

@@ -1,6 +1,6 @@
 interface:
   display_name: "连续完成多个任务"
-  short_description: "安排多个任务的依赖和分工，整合实际成果，统一完成检查与交付"
-  default_prompt: "使用 $implement-spec 连续完成这些任务，安排依赖和分工，统一整合与交付。"
+  short_description: "安排多个任务的依赖和分工，集中开发、少测试，由负责人统一收尾交付"
+  default_prompt: "使用 $implement-spec 连续完成这些任务，安排依赖和分工，集中开发、少测试，统一整合与收尾。"
 policy:
   allow_implicit_invocation: true

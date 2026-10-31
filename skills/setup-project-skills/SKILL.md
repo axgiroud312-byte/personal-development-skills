@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 - 想法需要讨论时用 `grilling`，在聊天中明确目标和关键选择。
 - 用户调用 `to-spec` 写整体规格，调用 `to-tickets` 拆具体任务；需要看设计时调用 `design-ui`，先交原型，满意后提取 Token。
-- 单项开发用 `implement`，连续多任务用 `implement-spec`，集中开发并统一必要检查。
+- 单项开发用 `implement`，连续多任务用 `implement-spec`；按 Issue 和实际代码自主执行，集中开发、少测试，最后统一收尾。
 - 设计和界面开发参考 `design-quality`；需要听懂工作结果时用 `explain-work`。
 
 按实际需要组合技能，简单任务可以直接实施。四个手动入口由用户启动，任务里的补充、修改和确认连续处理。
