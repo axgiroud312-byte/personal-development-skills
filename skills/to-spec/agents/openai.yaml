@@ -1,6 +1,6 @@
 interface:
-  display_name: "写清整体开发规格"
-  short_description: "将需求写成清楚的整体开发规格，明确范围、方案、共同要求和完成结果"
-  default_prompt: "使用 $to-spec 将这个需求整理成开发规格，写清目标、范围、整体方案和完成标准。"
+  display_name: "写清需求与方案理由"
+  short_description: "说明想实现的需求和方案选择理由，逐条列出想要与不想要的内容"
+  default_prompt: "使用 $to-spec 整理这次需求，说明想实现什么、为什么选择这个方案，再逐条列出我想要什么和不想要什么。"
 policy:
   allow_implicit_invocation: false

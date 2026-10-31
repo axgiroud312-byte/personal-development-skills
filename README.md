@@ -1,6 +1,6 @@
 # 中文开发技能
 
-这套技能帮助你把想法变成可用功能。核心流程是：**Spec 写整体规格，Issue 写具体任务，implement 集中完成开发。** 简单修改可以直接实施。
+这套技能帮助你把想法变成可用功能。核心流程是：**Spec 写需求与方案理由，Issue 写具体任务，implement 集中完成开发。** 简单修改可以直接实施。
 
 你决定目标和重要取舍，Agent 根据已有方案和实际代码处理工程细节。完成一组相关工作后，统一做必要检查并交付。
 
@@ -9,7 +9,7 @@
 | 你想做什么 | 技能 | 得到什么 |
 | --- | --- | --- |
 | 把想法说清楚 | [grilling](skills/grilling/SKILL.md) | 在聊天中明确目标和关键选择 |
-| 写整体开发方案 | [to-spec](skills/to-spec/SKILL.md) | 目标、范围、方案和完成标准 |
+| 写清需求与方案理由 | [to-spec](skills/to-spec/SKILL.md) | 想实现什么、为什么这样做、想要与不想要什么 |
 | 把方案拆成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 有具体做法、依赖和结果的 Issue |
 | 完成功能或修复 | [implement](skills/implement/SKILL.md) | 可使用的成果和实际检查结果 |
 | 连续完成多个任务 | [implement-spec](skills/implement-spec/SKILL.md) | 统一安排、整合和交付的成果 |
@@ -27,7 +27,7 @@
 | 资料 | 默认位置 | 写什么 |
 | --- | --- | --- |
 | 项目入口 | `AGENTS.md` | 这套技能的流程、文档位置和工作准则，保留项目已有指令 |
-| Spec | `docs/specs/<主题>.md` | 整体开发规格与共同要求 |
+| Spec | `docs/specs/<主题>.md` | 需求、方案理由，以及逐条的想要与不想要 |
 | Issue | 远程 Issue；未配置任务平台时用 `docs/issues/<标识>.md` | 具体任务、方案和进展 |
 | 原型 | `docs/design/design-board.html` | 页面、交互、组件和来源说明 |
 | Design Token | `docs/design/design-token.md` | 已确认原型实际使用的共用样式值 |
@@ -52,7 +52,7 @@
 
 `design-ui` 先交一个可打开的 HTML，按你的反馈修改同一版。你确认满意后，再从实际样式提取一份 Token 文档。正式开发参考布局、交互和样式值，在项目中完成真实业务。
 
-[AI slop 清单](skills/design-quality/references/design-quality.md) 保留你指定的负面设计参考，按实际页面判断问题。[Spec 模板](skills/to-spec/references/spec-template.md) 帮助写清整体方案，[Issue 模板](skills/to-tickets/references/issue-template.md) 帮助把任务交给下一位执行者。
+[AI slop 清单](skills/design-quality/references/design-quality.md) 保留你指定的负面设计参考，按实际页面判断问题。[Spec 模板](skills/to-spec/references/spec-template.md) 帮助写清需求与方案理由，[Issue 模板](skills/to-tickets/references/issue-template.md) 帮助把任务交给下一位执行者。
 
 ## 安装与更新
 
