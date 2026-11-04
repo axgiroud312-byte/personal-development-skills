@@ -2,7 +2,7 @@
 
 这套技能围绕同一件事工作：逐步理解用户真实意图，主动调查实际情况，让判断有依据，并随着交流和新发现持续修正。假设建立在已经理解的需求上，帮助把目标做成可用的成果。
 
-你决定目标和重要取舍，Agent 自主选择调查与实现方法。Spec 沉淀目标和总体方案，Issue 深化可执行细节，implement 集中完成开发。根据任务组合这些职责，简单工作直接推进。
+你决定目标和重要取舍，Agent 自主选择调查与实现方法。需求在写 Issue 前对齐，Spec 沉淀目标和总体方案，Issue 深化为明确的实施任务，implement 集中完成开发。根据任务组合这些职责，简单且明确的工作直接推进。
 
 ## 什么时候用哪个技能
 
@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 推敲想法和关键选择 | [grilling](skills/grilling/SKILL.md) | 对关键决策、边界与假设逐步形成共同理解 |
 | 确定目标与总体设计 | [to-spec](skills/to-spec/SKILL.md) | 有依据的目标、总体方案和架构，按需附设计产物 |
-| 把方案深化成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 结合实际项目补足细节、能够执行的任务 |
+| 把方案深化成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 将已对齐的需求补足为明确、可直接执行的任务 |
 | 完成功能或修复 | [implement](skills/implement/SKILL.md) | 自主实施、集中开发、少测试，必要检查后交付 |
 | 连续完成多个 Issue | [implement-spec](skills/implement-spec/SKILL.md) | 协调依赖、分工与整合，统一收尾 |
 | 探索和完善界面 | [design-ui](skills/design-ui/SKILL.md) | 符合当前需求的交互原型、Token 等设计表达 |
@@ -28,7 +28,9 @@
 
 `grilling` 借鉴 [Matt Pocock 的 grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) 对决策及其关联的深入追问；问题随当前理解和用户回答展开，表达方式和数量适应讨论需要。
 
-Spec 将这些认识沉淀为目标、总体方案和设计架构，说明各部分怎样共同实现需求。Issue 结合实际项目进一步研究和明确具体做法、衔接关系和完成标准。无论进行到哪一步，都保有调查、讨论和修正判断的能力；已有结论直接沿用。
+Spec 将这些认识沉淀为目标、总体方案和设计架构，说明各部分怎样共同实现需求。本次范围内的需求、边界、关键行为和影响需求的假设在编写 Issue 前明确，已有结论直接沿用。
+
+Issue 在确定的需求上补足具体做法、衔接关系和完成标准，形成可直接执行的任务。细化时发现需求仍有疑问，就回到讨论与 Spec 解决，再继续写任务。任务可以依赖其他任务的成果，但所需输入与预期结果应明确。
 
 各类产物都由模型根据任务自主组织，采用合适的结构、详略和表达方式。小需求可以集中表达，大项目可以拆成相互索引的文档，读者按需要展开相关内容。
 
@@ -56,7 +58,9 @@ Avoid unnecessary secondary labels and descriptions. Let the layout do the expla
 
 [AI slop 清单](skills/design-quality/references/design-quality.md) 保留指定的负面设计参考，结合真实页面判断问题。
 
-`implement` 与 `implement-spec` 承接已有方案，自主处理工程细节，集中开发、少做测试。中途的实际错误或关键疑问小范围核实；关联工作完成后统一整合与必要验证，检查通过后推进交付。
+`implement` 与 `implement-spec` 按已经确定的 Issue 自主落实工程细节，集中开发、少做测试。中途的实际错误或技术疑问小范围核实；关联工作完成后统一整合与必要验证，检查通过后推进交付。
+
+执行中出现用户需求变更，或实际证据使原方案无法成立时，先对齐变更并修订相关 Spec 与 Issue，再继续受影响的实施，其他明确的任务继续。
 
 文档与代码不一致时，查清原因并沿用合适的现有惯例，重要调整写回对应资料，交付时说明差异。成果与验证按实际情况表述，有 Issue 时同步任务结果。
 
