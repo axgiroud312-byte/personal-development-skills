@@ -1,6 +1,6 @@
 interface:
-  display_name: "写清需求与方案理由"
-  short_description: "说明想实现的需求和方案选择理由，逐条列出想要与不想要的内容"
-  default_prompt: "使用 $to-spec 整理这次需求，说明想实现什么、为什么选择这个方案，再逐条列出我想要什么和不想要什么。"
+  display_name: "形成目标与总体设计"
+  short_description: "理解真实需求，沉淀总体方案与设计架构，自主组织文档和必要的设计产物"
+  default_prompt: "使用 $to-spec，主动调查并与我对齐需求，形成目标、总体方案和设计架构，按需求自主组织文档与设计产物。"
 policy:
   allow_implicit_invocation: false

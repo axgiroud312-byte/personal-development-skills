@@ -1,64 +1,64 @@
 # 中文开发技能
 
-这套技能帮助你理清需求、看懂取舍，并通过具体样例提前判断关键成果。核心流程是：**Spec 写需求与方案理由，Issue 写具体任务，implement 集中完成开发。** 简单修改可以直接实施。
+这套技能围绕同一件事工作：逐步理解用户真实意图，主动调查实际情况，让判断有依据，并随着交流和新发现持续修正。假设建立在已经理解的需求上，帮助把目标做成可用的成果。
 
-你决定目标和重要取舍，Agent 按 Issue 和实际代码自主执行。集中开发、少测试，完成一组相关工作后统一收尾。
+你决定目标和重要取舍，Agent 自主选择调查与实现方法。Spec 沉淀目标和总体方案，Issue 深化可执行细节，implement 集中完成开发。根据任务组合这些职责，简单工作直接推进。
 
 ## 什么时候用哪个技能
 
 | 你想做什么 | 技能 | 得到什么 |
 | --- | --- | --- |
-| 把想法说清楚 | [grilling](skills/grilling/SKILL.md) | 用场景理清需求，看懂关键选择的效果与代价 |
-| 写清需求与方案理由 | [to-spec](skills/to-spec/SKILL.md) | 想实现什么、为什么这样做、想要与不想要什么 |
-| 把方案拆成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 做什么、怎么做、依赖什么和预期结果 |
-| 完成功能或修复 | [implement](skills/implement/SKILL.md) | 按 Issue 自主实施，集中开发、必要检查与交付 |
-| 连续完成多个 Issue | [implement-spec](skills/implement-spec/SKILL.md) | 理清目标，提前判断关键成果，再协调任务并统一收尾 |
-| 逐步看见界面效果 | [design-ui](skills/design-ui/SKILL.md) | 先看可交互的应用结构，按反馈完善，随时停止并保留进度 |
-| 找出界面中的 AI 味问题 | [design-quality](skills/design-quality/SKILL.md) | 结合实际页面判断 AI slop |
-| 让项目知道这套流程 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 写入 `AGENTS.md` 的流程和文档位置 |
+| 推敲想法和关键选择 | [grilling](skills/grilling/SKILL.md) | 对关键决策、边界与假设逐步形成共同理解 |
+| 确定目标与总体设计 | [to-spec](skills/to-spec/SKILL.md) | 有依据的目标、总体方案和架构，按需附设计产物 |
+| 把方案深化成任务 | [to-tickets](skills/to-tickets/SKILL.md) | 结合实际项目补足细节、能够执行的任务 |
+| 完成功能或修复 | [implement](skills/implement/SKILL.md) | 自主实施、集中开发、少测试，必要检查后交付 |
+| 连续完成多个 Issue | [implement-spec](skills/implement-spec/SKILL.md) | 协调依赖、分工与整合，统一收尾 |
+| 探索和完善界面 | [design-ui](skills/design-ui/SKILL.md) | 符合当前需求的交互原型、Token 等设计表达 |
+| 判断界面效果 | [design-quality](skills/design-quality/SKILL.md) | 用布局表达信息，结合实际页面判断 AI slop |
+| 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 融入 `AGENTS.md` 的职责、资料位置和工作原则 |
 | 听懂刚才做了什么 | [explain-work](skills/explain-work/SKILL.md) | 通俗的结果、原因和使用说明 |
 
-`to-spec`、`to-tickets`、`design-ui`、`setup-project-skills` 由你主动调用。一次任务里的补充、修改和确认可以连续处理；普通开发按需要读取和更新已有资料。
+`to-spec`、`to-tickets`、`design-ui`、`setup-project-skills` 保留手动入口。已授权任务中的调查、设计补充、修改和讨论可以连续处理；例如 Spec 可以直接包含需求所需的原型或 Token。
 
 这四个入口保留 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`。客户端支持这些开关时，由客户端控制调用；其他客户端按技能正文约定使用。
 
-## 文档放在哪里
+## 持续理解与形成方案
 
-| 资料 | 默认位置 | 写什么 |
+用户的表达、给出的材料与项目实际情况共同帮助 Agent 理解需求。调查什么、调查多深、什么时候讨论，由尚未弄清的问题及其对结果的影响决定。能查清的事实主动查，涉及用户意图和重要取舍的疑问带着具体发现与建议讨论。
+
+`grilling` 借鉴 [Matt Pocock 的 grilling](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md) 对决策及其关联的深入追问；问题随当前理解和用户回答展开，表达方式和数量适应讨论需要。
+
+Spec 将这些认识沉淀为目标、总体方案和设计架构，说明各部分怎样共同实现需求。Issue 结合实际项目进一步研究和明确具体做法、衔接关系和完成标准。无论进行到哪一步，都保有调查、讨论和修正判断的能力；已有结论直接沿用。
+
+各类产物都由模型根据任务自主组织，采用合适的结构、详略和表达方式。小需求可以集中表达，大项目可以拆成相互索引的文档，读者按需要展开相关内容。
+
+## 资料放在哪里
+
+| 资料 | 默认位置 | 用途 |
 | --- | --- | --- |
-| 项目入口 | `AGENTS.md` | 这套技能的流程、文档位置和工作准则，保留项目已有指令 |
-| Spec | `docs/specs/<主题>.md` | 需求、方案理由，以及逐条的想要与不想要 |
-| Issue | 远程 Issue；未配置任务平台时用 `docs/issues/<标识>.md` | 四部分任务正文，进展随任务更新 |
-| 原型 | `docs/design/design-board.html` | 逐步完善的布局、页面与子页面、交互；组件和来源说明放在文件内 |
-| Design Token | `docs/design/design-token.md` | 已确认原型实际使用的共用样式值 |
+| 项目入口 | `AGENTS.md` | 工作原则、技能职责与实际资料位置 |
+| Spec | `docs/specs/` | 目标、总体方案和设计架构 |
+| Issue | 远程 Issue；未配置任务平台时用 `docs/issues/` | 可执行方案、任务进展和实际结果 |
+| HTML 原型 | `docs/design/design-board.html` | 可操作的界面与交互表达 |
+| Design Token | `docs/design/design-token.md` | 设计采用或提议的共用样式及其用途 |
 
-按当前任务产出所需资料，已有同类文件沿用原位置。讨论和工作解释直接在聊天交付。每项信息保留一份正文，其他位置引用。
+已有资料沿用原处，新文件按实际需要建立。每项结论在合适的位置维护，其他位置引用。讨论与工作解释在聊天中交付。
 
-远程 Issue 可用时直接在远程维护；暂时访问受阻时，在聊天保留待发布草稿和具体阻碍。先核实任务功能可用，再选择任务位置。
+远程 Issue 可用时在远程维护；暂时访问受阻时，在聊天保留待发布草稿与具体阻碍。`setup-project-skills` 将项目实际资料位置和协作原则融入 `AGENTS.md`。
 
-`setup-project-skills` 将这张资料地图和技能流程写进项目 `AGENTS.md`，让后续 Agent 能找到工作依据。
+## 设计与实施
 
-## 怎样协作
+设计产物、展示范围和细化顺序由当前需求决定。需要交互原型时，默认使用可独立打开的 HTML；Token 可以按需求直接定义，也可以从实际样式提取。设计方案、原型与 Token 保持对应，如实说明已确定和仍待讨论的部分。用户停止时保留当前成果，之后继续完善。
 
-用户当前目标和明确要求决定工作方向。Agent 阅读相关代码、资料和实际结果，自主处理工程细节；重要假设和方案变化用短句说明，方便你纠正。涉及目标、明确要求、关键体验或新增重要影响的取舍，由你决定，其余工作继续。
+让布局、分组、对齐与视觉层级清楚表达信息和操作，把文字留给必要内容：
 
-需求还不清楚时，`grilling` 用具体场景帮助讨论，每次说清关键选项会带来的效果和代价。你看过例子后可以调整想法，结论随之更新。
+Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
 
-遇到文档过时或实现矛盾时，先查清原因，沿用合适的现有做法，修正已证实的错误。重要调整写回对应 Spec 或 Issue，完成后说明差异。
+[AI slop 清单](skills/design-quality/references/design-quality.md) 保留指定的负面设计参考，结合真实页面判断问题。
 
-`implement` 分为读清任务、自主执行、集中开发少测试、统一收尾。关联任务集中完成，检查优先复用项目已有安排；中途的实际错误或关键疑问小范围处理，最终按 Issue 的预期结果统一检查和交付。
+`implement` 与 `implement-spec` 承接已有方案，自主处理工程细节，集中开发、少做测试。中途的实际错误或关键疑问小范围核实；关联工作完成后统一整合与必要验证，检查通过后推进交付。
 
-`implement-spec` 先理清本次目标。难以想象、做错后返工较大的部分，先用已有原型、具体样例或操作过程帮助判断，说明主要取舍和待实际运行确认的部分；方向明确的任务直接推进。再安排多个 Issue 的依赖、分工和整合，执行方式复用 `implement`，由整体负责人统一收尾。
-
-结果按实际情况说明：代码已改、真实运行、模拟检查、等待验证、用户验收。有对应 Issue 时，将进展和结果写回该 Issue；其他任务在聊天中交接。
-
-## 设计怎样交给开发
-
-`design-ui` 先用一个可交互的 HTML 展示应用外壳、导航、布局、信息层级和页面与子页面的关系。内容可以先简陋些，让你点击切换、判断结构，再按反馈逐步完善同一文件。
-
-你随时可以说停，当前 HTML 和进度会保留，之后可以接着做。本次范围内的完整原型确认满意后，再从实际样式提取一份 Token 文档。正式开发参考原型与 Token，在项目中完成真实业务。
-
-[AI slop 清单](skills/design-quality/references/design-quality.md) 保留你指定的负面设计参考，按实际页面判断问题。[Spec 模板](skills/to-spec/references/spec-template.md) 帮助写清需求与方案理由，[Issue 模板](skills/to-tickets/references/issue-template.md) 帮助把任务交给下一位执行者。
+文档与代码不一致时，查清原因并沿用合适的现有惯例，重要调整写回对应资料，交付时说明差异。成果与验证按实际情况表述，有 Issue 时同步任务结果。
 
 ## 安装与更新
 

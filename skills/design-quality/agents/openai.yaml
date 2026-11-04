@@ -1,4 +1,4 @@
 interface:
-  display_name: "判断常见 AI slop"
-  short_description: "结合实际页面和用户参考判断 AI slop，说明具体问题及其对使用的影响"
-  default_prompt: "使用 $design-quality 结合实际界面和 AI slop 清单，指出具体问题及其影响。"
+  display_name: "判断和改善界面效果"
+  short_description: "让布局清楚表达信息和操作，结合实际页面判断多余文字、混乱层级与装饰"
+  default_prompt: "使用 $design-quality，让布局本身表达清楚，结合实际界面与 AI slop 清单判断需要改善的地方。"
