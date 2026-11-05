@@ -1,6 +1,0 @@
-interface:
-  display_name: "按任务集中完成开发"
-  short_description: "按 Issue 和实际代码自主执行，集中开发、少测试，最后统一收尾交付"
-  default_prompt: "使用 $implement，按 Issue 和实际代码自主完成任务，集中开发、少测试，最后统一收尾。"
-policy:
-  allow_implicit_invocation: true

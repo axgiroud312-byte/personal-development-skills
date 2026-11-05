@@ -1,0 +1,6 @@
+interface:
+  display_name: "协调开发并交付一个 PR"
+  short_description: "按依赖分派全新上下文实施者，集中整合、统一验证与整体审查，通过一个 PR 交付"
+  default_prompt: "使用 $implement-pr，由主 Agent 按依赖为每个任务新建独立上下文实施者，集中整合、统一验证并审查整个改动，最终通过一个 PR 交付。"
+policy:
+  allow_implicit_invocation: false

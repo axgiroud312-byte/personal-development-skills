@@ -1,6 +1,6 @@
 interface:
   display_name: "写清技能与资料位置"
-  short_description: "将技能职责、持续理解需求的原则和实际资料位置融入项目 AGENTS.md"
-  default_prompt: "使用 $setup-project-skills，按项目实际情况组织 AGENTS.md 中的技能职责、工作原则和资料位置。"
+  short_description: "将技能职责、手动入口、实际资料位置与协作原则融入项目 AGENTS.md"
+  default_prompt: "使用 $setup-project-skills，结合项目现有约定，在 AGENTS.md 写清技能职责、手动入口和实际资料位置。"
 policy:
   allow_implicit_invocation: false

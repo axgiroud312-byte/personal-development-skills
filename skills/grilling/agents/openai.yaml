@@ -1,6 +1,0 @@
-interface:
-  display_name: "推敲关键决策与需求"
-  short_description: "通过调查与追问，逐步理清关键决策、需求边界和重要假设，让选择有依据"
-  default_prompt: "使用 $grilling，主动理解我的需求，围绕关键决策、边界和重要假设与我讨论，让问题随着理解逐步深入。"
-policy:
-  allow_implicit_invocation: true

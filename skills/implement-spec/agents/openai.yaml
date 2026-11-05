@@ -1,6 +1,0 @@
-interface:
-  display_name: "协调任务并完成交付"
-  short_description: "承接已有 Spec 和 Issue，协调依赖、分工与整合，集中开发并统一收尾"
-  default_prompt: "使用 $implement-spec，承接已有方案协调多个 Issue 的执行与整合，复用 implement 集中开发、少测试，最后统一收尾。"
-policy:
-  allow_implicit_invocation: true
