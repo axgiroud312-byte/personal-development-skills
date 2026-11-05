@@ -1,0 +1,4 @@
+interface:
+  display_name: "组件多方案探索"
+  short_description: "结合当前组件库生成不同 UI 方案，演示交互状态并通过可视化界面比较和选择"
+  default_prompt: "使用 $component-variants，根据当前组件库和我的设计需求生成多个不同版本，展示交互状态，并提供可切换的预览界面让我选择。"

@@ -16,6 +16,7 @@ disable-model-invocation: true
 - `to-spec` 沉淀目标、总体方案和设计架构，按需求包含原型或 Token 等设计表达。
 - `to-tickets` 将已对齐的需求与总体方案补足为明确、可直接执行的任务。
 - `design-ui` 根据需求探索和完善界面；`design-quality` 帮助判断布局、信息和整体效果。
+- `component-variants` 结合当前组件库探索同一组件的多套设计与交互方案，提供可切换的对比预览，按用户选择继续细化。
 - `implement` 完成具体任务；`implement-spec` 协调多个 Issue，执行方式复用 implement，集中开发、少测试，统一收尾。
 - `explain-work` 用通俗中文讲清实际成果和使用方式。
 

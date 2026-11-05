@@ -20,6 +20,8 @@ Avoid unnecessary secondary labels and descriptions. Let the layout do the expla
 
 结合 [design-quality](../design-quality/SKILL.md) 判断整体效果。使用接近真实长度的内容表现关键流程；设计依据、组件来源、联网依赖和模拟范围等说明放在容易查阅且不干扰产品界面的地方。HTML 原型中的组件与样式说明可以收在折叠区域。
 
+需要比较同一组件的多个设计方向时，结合 [component-variants](../component-variants/SKILL.md) 制作可操作的方案对比，并将用户选定版本纳入当前设计。
+
 ## 随反馈完善并交接
 
 根据实际显示、必要操作和用户反馈调整设计。每次交付前做与当前成果相称的轻量检查，说明打开方式、能体验的内容和仍待确定的部分。用户说停时保留当前可用成果和进度，后续从这里继续。

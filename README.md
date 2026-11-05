@@ -14,6 +14,7 @@
 | 完成功能或修复 | [implement](skills/implement/SKILL.md) | 自主实施、集中开发、少测试，必要检查后交付 |
 | 连续完成多个 Issue | [implement-spec](skills/implement-spec/SKILL.md) | 协调依赖、分工与整合，统一收尾 |
 | 探索和完善界面 | [design-ui](skills/design-ui/SKILL.md) | 符合当前需求的交互原型、Token 等设计表达 |
+| 比较同一组件的多个方案 | [component-variants](skills/component-variants/SKILL.md) | 结合当前组件库生成不同版本，演示交互状态并可视化选择 |
 | 判断界面效果 | [design-quality](skills/design-quality/SKILL.md) | 用布局表达信息，结合实际页面判断 AI slop |
 | 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 融入 `AGENTS.md` 的职责、资料位置和工作原则 |
 | 听懂刚才做了什么 | [explain-work](skills/explain-work/SKILL.md) | 通俗的结果、原因和使用说明 |
@@ -49,6 +50,8 @@ Issue 在确定的需求上补足具体做法、衔接关系和完成标准，�
 远程 Issue 可用时在远程维护；暂时访问受阻时，在聊天保留待发布草稿与具体阻碍。`setup-project-skills` 将项目实际资料位置和协作原则融入 `AGENTS.md`。
 
 ## 设计与实施
+
+`component-variants` 结合当前组件库，为同一组件实现多个设计方向，通过可切换的预览展示交互状态、适用场景和取舍；用户选定后继续细化或接入项目。该流程参考 [Emil Kowalski 的 prototype](https://github.com/emilkowalski/skills/blob/main/skills/prototype/SKILL.md)。
 
 设计产物、展示范围和细化顺序由当前需求决定。需要交互原型时，默认使用可独立打开的 HTML；Token 可以按需求直接定义，也可以从实际样式提取。设计方案、原型与 Token 保持对应，如实说明已确定和仍待讨论的部分。用户停止时保留当前成果，之后继续完善。
 
