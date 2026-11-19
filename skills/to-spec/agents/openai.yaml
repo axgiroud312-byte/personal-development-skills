@@ -1,6 +1,6 @@
 interface:
   display_name: "把讨论整理成 Spec"
-  short_description: "将已有讨论整理为问题、解决方案、用户故事和实现决定，保存到项目入口"
-  default_prompt: "使用 $to-spec，将当前对话中已经明确的需求和决定整理成中文 Spec，并保存到项目约定的位置。"
+  short_description: "从已有讨论整理出每个主要改动的目标行为、验收依据和既定约束"
+  default_prompt: "使用 $to-spec，把已经明确的需求写成中文 Spec，说明要改什么、怎样知道改对了，并保存到项目约定的位置。"
 policy:
   allow_implicit_invocation: false
