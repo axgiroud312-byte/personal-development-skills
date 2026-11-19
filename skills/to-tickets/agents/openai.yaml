@@ -1,6 +1,6 @@
 interface:
   display_name: "整理完整功能的开发 Issue"
-  short_description: "按完整功能组织开发 Issue，写清要改什么、怎样算完成和真实依赖"
+  short_description: "按完整功能组织开发 Issue，让接通流程的工单负责跨票行为验收"
   default_prompt: "使用 $to-tickets，将当前方案整理为尽量少的完整功能开发 Issue，为每个主要行为写出能直接判断对错的最小检查，并发布到项目任务入口。"
 policy:
   allow_implicit_invocation: false
