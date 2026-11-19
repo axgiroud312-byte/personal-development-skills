@@ -1,6 +1,6 @@
 interface:
-  display_name: "整理完整功能的开发 Issue"
-  short_description: "按完整功能组织开发 Issue，让接通流程的工单负责跨票行为验收"
-  default_prompt: "使用 $to-tickets，将当前方案整理为尽量少的完整功能开发 Issue，为每个主要行为写出能直接判断对错的最小检查，并发布到项目任务入口。"
+  display_name: "按实际交接拆工单"
+  short_description: "只为真实的依赖或交接拆工单，让接手者找到要用的成果和验收场景"
+  default_prompt: "使用 $to-tickets，判断这项工作是否需要拆分，按实际依赖或交接整理工单。"
 policy:
   allow_implicit_invocation: false
