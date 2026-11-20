@@ -13,4 +13,4 @@ Avoid unnecessary secondary labels and descriptions. Let the layout do the expla
 
 读取 [AI slop 清单](references/design-quality.md)，结合实际页面、内容和用户需求，判断哪些问题确实存在，以及它们影响了什么。按具体用途和整体效果判断，完整条目集中在参考文件维护。
 
-设计和实现任务将判断用于当前工作，评审任务在聊天中说明问题，表达形式按任务需要决定。需要设计探索时可参考 [design-ui](../design-ui/SKILL.md)，在当前授权范围内选用有助于理解的产物并按反馈完善。
+设计和实现任务将判断用于当前工作，评审任务在聊天中说明问题，表达形式按任务需要决定。

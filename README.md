@@ -21,13 +21,10 @@
 
 | 你想做什么 | 技能 | 得到什么 |
 | --- | --- | --- |
-| 探索和完善界面 | [design-ui](skills/design-ui/SKILL.md) | 符合当前需求的交互原型、Token 等设计表达 |
-| 比较同一组件的多个方案 | [component-variants](skills/component-variants/SKILL.md) | 结合当前组件库生成不同版本，演示交互状态并可视化选择 |
 | 判断界面效果 | [design-quality](skills/design-quality/SKILL.md) | 用布局表达信息，结合实际页面判断 AI slop |
 | 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 项目 `AGENTS.md` 里的启动方式、验证入口、资料位置、系统红线和项目例外 |
-| 听懂刚才做了什么 | [explain-work](skills/explain-work/SKILL.md) | 通俗的结果、原因和使用说明 |
 
-`design-ui`、`setup-project-skills` 也保留手动调用；`component-variants`、`design-quality`、`explain-work` 延续各自现有触发方式。共六个手动入口使用 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`，客户端支持时由客户端控制调用。
+`setup-project-skills` 也保留手动调用；`design-quality` 延续现有触发方式。共五个手动入口使用 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`，客户端支持时由客户端控制调用。
 
 按需使用 `setup-project-skills` 记录项目约定，其他技能可直接使用。
 
@@ -35,9 +32,7 @@
 
 Avoid unnecessary secondary labels and descriptions. Let the layout do the explaining.
 
-[AI slop 清单](skills/design-quality/references/design-quality.md) 保留连续编号的负面设计参考，结合真实页面判断问题。原型、Token 和展示范围按需求组织，保持相互对应，按反馈持续完善；用户停止时保留当前成果。
-
-`component-variants` 结合当前组件库探索同一组件的多个方向，通过可切换预览展示交互状态、适用场景和取舍，用户选定后继续细化。该流程参考 [Emil Kowalski 的 prototype](https://github.com/emilkowalski/skills/blob/main/skills/prototype/SKILL.md)。
+[AI slop 清单](skills/design-quality/references/design-quality.md) 保留连续编号的负面设计参考，结合真实页面判断问题。
 
 ## 资料放在哪里
 
@@ -49,10 +44,8 @@ Avoid unnecessary secondary labels and descriptions. Let the layout do the expla
 | Spec | 已有关联 Spec 原位更新。新 Spec 优先使用项目已配置的任务系统，可建立独立的 Spec Issue；未配置远程入口时用 `docs/specs/<slug>.md`。已有 `docs/specs/` 权威来源时继续沿用 |
 | 开发 Issue | 远程任务系统；未配置远程入口时用 `docs/issues/<feature>/<NN>-<slug>.md`，一票一文件。记录本票交付的成果、依赖和进展 |
 | 交付记录 | 一个 PR 或同一交付记录：本次实测结果、必要的构建与审查结论 |
-| HTML 原型 | 默认 `docs/design/design-board.html`，表达可操作的界面与交互 |
-| Design Token | 默认 `docs/design/design-token.md`，记录共用样式及其用途 |
 
-Spec Issue 用于记录方案与决定，开发 Issue 用于执行任务；标签沿用项目已有配置。任务系统已配置但暂时无法访问时，在聊天保留待发布内容并说明实际阻碍。讨论与工作解释在聊天中交付。
+Spec Issue 用于记录方案与决定，开发 Issue 用于执行任务；标签沿用项目已有配置。任务系统已配置但暂时无法访问时，在聊天保留待发布内容并说明实际阻碍。讨论在聊天中交付。
 
 ## 工作原则
 
@@ -80,10 +73,10 @@ npx skills@latest add axgiroud312-byte/personal-development-skills --skill imple
 
 重新运行可更新同一范围；去掉 `-g` 则安装到当前项目。更新前整合安装副本里的自定义修改。其他客户端按实际支持的 Agent 名称调整参数，安装时保留技能自身的参考文件和显示配置。
 
-从本仓库旧版更新时，入口对应为 `grilling` → `grill-me`，`implement` / `implement-spec` → `implement-pr`。用 [Skills CLI 的移除命令](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-remove) 清理本仓库旧入口，再运行上面的安装命令。全局 Codex 安装对应：
+从本仓库旧版更新时，入口对应为 `grilling` → `grill-me`，`implement` / `implement-spec` → `implement-pr`；`design-ui`、`component-variants`、`explain-work` 已移除。用 [Skills CLI 的移除命令](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#skills-remove) 清理本仓库旧入口，再运行上面的安装命令。全局 Codex 安装对应：
 
 ```sh
-npx skills@latest remove grilling implement implement-spec --agent codex -g
+npx skills@latest remove grilling implement implement-spec design-ui component-variants explain-work --agent codex -g
 ```
 
 项目级安装去掉 `-g`，并将项目 `AGENTS.md` 中的旧入口名称更新为上述新名称。

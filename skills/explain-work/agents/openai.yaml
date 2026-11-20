@@ -1,6 +1,0 @@
-interface:
-  display_name: "讲清刚才做了什么"
-  short_description: "用通俗中文讲清刚才解决了什么、为什么这样改，以及实际检查和使用情况"
-  default_prompt: "使用 $explain-work，用通俗中文解释刚才的成果、改动原因和使用方法。"
-policy:
-  allow_implicit_invocation: true
