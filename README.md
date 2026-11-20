@@ -9,7 +9,7 @@
 | 推敲想法和关键选择 | [grill-me](skills/grill-me/SKILL.md) | 按决策依赖分轮追问，每问给出建议，逐步形成清楚的决定 |
 | 记录会改变结果的取舍 | [to-spec](skills/to-spec/SKILL.md) | 短规格，只补原需求缺的决定和能区分方案的例子 |
 | 为实际依赖或交接拆工单 | [to-tickets](skills/to-tickets/SKILL.md) | 接手者知道由谁交付什么、到哪里看验收场景 |
-| 把明确需求交付为一个 PR | [implement-pr](skills/implement-pr/SKILL.md) | 从原需求直接实现，用能抓住实际错误的检查验证，经独立审查交付 |
+| 把明确需求交付为一个 PR | [implement-pr](skills/implement-pr/SKILL.md) | 尽早从真实入口跑通关键链路，验证最终行为，经独立审查交付 |
 
 四个入口按需手动调用。需求和预期都清楚时，直接开发；需要 PR 可以直接用 `implement-pr`。一次调用内已授权的工作连续完成。
 
@@ -63,6 +63,8 @@ Spec Issue 用于记录方案与决定，开发 Issue 用于执行任务；标�
 先做能直接验证本次改动的最小检查。检查失败或改动影响其他功能时，再扩大范围。交付或验证确实需要时才构建。
 
 ## 安装与更新
+
+本仓库 `main` 分支的 `skills/` 是这些技能的唯一维护基线。技能改动合入后，本地安装从这里同步。
 
 准备好 Node.js/npm、Git 及 npm、GitHub 访问能力，用 [Skills CLI](https://github.com/vercel-labs/skills) 为 Codex 全局安装：
 

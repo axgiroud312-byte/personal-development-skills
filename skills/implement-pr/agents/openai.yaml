@@ -1,6 +1,6 @@
 interface:
   display_name: "协调开发并交付一个 PR"
-  short_description: "从明确需求直接开发，运行最能暴露本次错误的检查，经独立审查交付"
-  default_prompt: "使用 $implement-pr，从当前需求完成开发，实测最容易做错的行为并交付 PR。"
+  short_description: "从明确需求直接开发，尽早跑通关键链路，实测最终行为，经独立审查交付"
+  default_prompt: "使用 $implement-pr，尽早从真实入口跑通关键链路，验证最终行为并交付 PR。"
 policy:
   allow_implicit_invocation: false
