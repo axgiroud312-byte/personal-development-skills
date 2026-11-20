@@ -1,6 +1,6 @@
 interface:
   display_name: "写清技能与资料位置"
-  short_description: "在项目 AGENTS.md 写清实际启动与验证方式、资料位置和所需技能入口"
+  short_description: "在项目 AGENTS.md 写清启动与验证方式、资料位置、系统红线和技能入口"
   default_prompt: "使用 $setup-project-skills，核对项目的启动、验证和资料入口，更新 AGENTS.md 并引用适用的技能。"
 policy:
   allow_implicit_invocation: false

@@ -24,7 +24,7 @@
 | 探索和完善界面 | [design-ui](skills/design-ui/SKILL.md) | 符合当前需求的交互原型、Token 等设计表达 |
 | 比较同一组件的多个方案 | [component-variants](skills/component-variants/SKILL.md) | 结合当前组件库生成不同版本，演示交互状态并可视化选择 |
 | 判断界面效果 | [design-quality](skills/design-quality/SKILL.md) | 用布局表达信息，结合实际页面判断 AI slop |
-| 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 项目 `AGENTS.md` 里的启动方式、验证入口、资料位置和项目例外 |
+| 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 项目 `AGENTS.md` 里的启动方式、验证入口、资料位置、系统红线和项目例外 |
 | 听懂刚才做了什么 | [explain-work](skills/explain-work/SKILL.md) | 通俗的结果、原因和使用说明 |
 
 `design-ui`、`setup-project-skills` 也保留手动调用；`component-variants`、`design-quality`、`explain-work` 延续各自现有触发方式。共六个手动入口使用 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`，客户端支持时由客户端控制调用。
