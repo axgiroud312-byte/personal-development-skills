@@ -1,4 +1,4 @@
 interface:
   display_name: "判断和改善界面效果"
-  short_description: "让布局清楚表达信息和操作，结合实际页面判断多余文字、混乱层级与装饰"
+  short_description: "让布局清楚表达信息和操作，结合真实渲染页面判断层级、排版破损、状态反馈与 AI slop"
   default_prompt: "使用 $design-quality，让布局本身表达清楚，结合实际界面与 AI slop 清单判断需要改善的地方。"
