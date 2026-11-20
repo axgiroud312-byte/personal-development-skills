@@ -1,0 +1,6 @@
+interface:
+  display_name: "按工单冷启动执行"
+  short_description: "按依赖顺序执行 to-tickets 工单，下一票与返修默认开新会话，凭运行证据推进"
+  default_prompt: "使用 $run-tickets，按依赖顺序逐票执行已有工单，下一票与返修默认新会话接续并凭运行证据验收。"
+policy:
+  allow_implicit_invocation: false

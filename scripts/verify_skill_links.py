@@ -6,10 +6,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {
-    "design-quality", "grill-me",
+    "design-quality", "grill-me", "run-tickets",
     "setup-project-skills", "to-spec", "to-tickets",
 }
-MANUAL = {"grill-me", "setup-project-skills", "to-spec", "to-tickets"}
+MANUAL = {"grill-me", "run-tickets", "setup-project-skills", "to-spec", "to-tickets"}
 
 
 def headings(source):

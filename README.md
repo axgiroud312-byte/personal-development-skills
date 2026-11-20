@@ -1,16 +1,17 @@
 # 中文开发技能
 
-这套技能帮助你推敲想法、记录决定、组织开发任务，并把关界面质量。你决定目标和重要取舍，Agent 主动调查实际情况，在确定的范围内自主处理工程细节。
+这套技能帮助你推敲想法、记录决定、拆解并按新会话执行工单，以及把关界面质量。你决定目标和重要取舍，Agent 主动调查与实测事实，在确定的范围内自主处理工程细节。
 
-## 三个主入口
+## 四个主入口
 
 | 你想做什么 | 技能 | 得到什么 |
 | --- | --- | --- |
-| 推敲想法和关键选择 | [grill-me](skills/grill-me/SKILL.md) | 按决策依赖分轮追问，每问给出建议，逐步形成清楚的决定 |
+| 推敲想法和关键选择 | [grill-me](skills/grill-me/SKILL.md) | 先测可观测事实，再按决策依赖分轮追问产品取舍并给出建议 |
 | 记录会改变结果的取舍 | [to-spec](skills/to-spec/SKILL.md) | 短规格，只补原需求缺的决定和能区分方案的例子 |
-| 为实际依赖或交接拆工单 | [to-tickets](skills/to-tickets/SKILL.md) | 接手者知道由谁交付什么、到哪里看验收场景 |
+| 为实际依赖或交接拆工单 | [to-tickets](skills/to-tickets/SKILL.md) | 接手者知道由谁交付什么、改动边界与验收场景 |
+| 按工单冷启动执行 | [run-tickets](skills/run-tickets/SKILL.md) | 按依赖逐票推进，下一票与返修默认开新会话，凭运行证据验收 |
 
-三个入口按需手动调用。需求和预期都清楚时，直接开发；一次调用内已授权的工作连续完成。
+四个入口按需手动调用。需求和预期都清楚时，直接开发；已有拆好的多张工单时，用 `run-tickets` 按序推进。一次调用内已授权的工作连续完成。
 
 - “设置保存后重开就丢了，修一下。” 在当前目录复现、修复，再重开确认。
 - “失败后点重放时，流程可能已经更新了。” 若用哪一版仍需选择，用 `grill-me` 讨论；确定后，`to-spec` 把决定补在原需求旁。
@@ -21,9 +22,9 @@
 | 你想做什么 | 技能 | 得到什么 |
 | --- | --- | --- |
 | 判断界面效果 | [design-quality](skills/design-quality/SKILL.md) | 用布局表达信息，结合实际页面判断 AI slop |
-| 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 项目 `AGENTS.md` 里的启动方式、验证入口、资料位置、系统红线和项目例外 |
+| 让项目找到工作依据 | [setup-project-skills](skills/setup-project-skills/SKILL.md) | 项目 `AGENTS.md` 里的启动与验证（含无运行证据不汇报）、资料位置、系统红线和项目例外 |
 
-`setup-project-skills` 也保留手动调用；`design-quality` 延续现有触发方式。共四个手动入口使用 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`，客户端支持时由客户端控制调用。
+`setup-project-skills` 也保留手动调用；`design-quality` 延续现有触发方式。共五个手动入口使用 `disable-model-invocation: true` 和 `policy.allow_implicit_invocation: false`，客户端支持时由客户端控制调用。
 
 按需使用 `setup-project-skills` 记录项目约定，其他技能可直接使用。
 
@@ -81,4 +82,4 @@ npx skills@latest remove grilling implement implement-spec implement-pr design-u
 
 仓库维护按 [AGENTS.md](AGENTS.md) 执行，结构检查使用 `python -X utf8 -B scripts/verify_skill_links.py`；真实使用效果在实际任务中观察。
 
-三个主入口参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills) 并按个人工作方式调整，来源与许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+前三个主入口参考 [Matt Pocock 的 Skills](https://github.com/mattpocock/skills) 并按个人工作方式调整，来源与许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
