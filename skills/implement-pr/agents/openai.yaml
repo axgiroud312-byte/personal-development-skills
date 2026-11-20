@@ -1,6 +1,6 @@
 interface:
   display_name: "协调开发并交付一个 PR"
-  short_description: "在同一项目目录按依赖开发，验证最终行为，经独立审查后交付一个 PR"
-  default_prompt: "使用 $implement-pr，在当前项目目录完成这些任务，验证实际行为，安排独立审查，并交付一个 PR。"
+  short_description: "从明确需求直接开发，尽早跑通关键链路，实测最终行为，经独立审查交付"
+  default_prompt: "使用 $implement-pr，尽早从真实入口跑通关键链路，验证最终行为并交付 PR。"
 policy:
   allow_implicit_invocation: false
